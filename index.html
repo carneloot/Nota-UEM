@@ -10,9 +10,9 @@
 
 <body>
   <div class='resumo'>
-    <h3>Nota total: 000 / 360</h3>
-    <h4>Nota questões objetivas: 000 / 240</h4>
-    <h4>Nota redação: 000 / 120</h4>
+    <h2>Nota total: <span><script>document.write(NOTA_REDACAO + notaQstObj)</script></span> / 360</h2>
+    <h3>Nota questões objetivas: <span><script>document.write(notaQstObj)</script></span> / 240</h3>
+    <h3>Nota redação: <span><script>document.write(NOTA_REDACAO)</script></span> / 120</h3>
   </div>
   <div class='questoes'>
     <script>
@@ -21,7 +21,9 @@
   </div>
 
   <p>
-    <!-- numero de acertos e de questões zeradas -->
+    <script>
+      document.write("Acertos:&nbsp;" + qstCertas + "&nbsp;||&nbsp;Zeradas:&nbsp;" + (40 - qstCertas))
+    </script>
   </p>
 
 </body>
