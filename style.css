@@ -408,15 +408,18 @@ body {
 
 .questoes table th {
   text-align: left; }
+
 .questoes table td:first-child {
   width: 100px; }
+
 .questoes table td {
   width: 80px;
   text-align: left; }
 
 .resumo h2, .resumo h3 {
-  margin: 0px 0px 8px 0px; }
+  margin: 0px; }
   .resumo h2 span, .resumo h3 span {
     font-size: 2em; }
 
-/*# sourceMappingURL=style.css.map */
+.resumo h3:last-child {
+  margin-bottom: 20px; }
