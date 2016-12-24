@@ -1,7 +1,7 @@
 // Definindo variáveis
 const MARCADAS = [12, 19, 02, 22, 24, 10, 17, 06, 26, 10, 15, 13, 18, 04, 02, 05, 17, 10, 13, 06, 13, 23, 17, 10, 03, 16, 03, 09, 24, 22, 22, 11, 27, 19, 12, 02, 30, 13, 25, 20];
 
-const CORRETAS = [07, 19, 13, 18, 04, 14, 29, 20, 23, 10, 13, 03, 02, 14, 23, 05, 27, 18, 13, 06, 11, 23, 05, 17, 18, 12, 03, 09, 24, 22, 17, 10, 25, 23, 28, 18, 28, 12, 29, 20];
+const CORRETAS = [07, 19, 13, 18, 04, 14, 29, 16, 23, 10, 13, 03, 02, 14, 23, 01, 25, 18, 13, 06, 10, 23, 05, 17, 18, 12, 03, 09, 24, 22, 17, 10, 25, 23, 28, 18, 28, 12, 29, 20];
 
 const CATEGORIAS = [
 	['Conhecimentos Gerais', 0, 18],
@@ -64,6 +64,7 @@ for (var i = 0; i < MARCADAS.length; i++) {
 		qstCertas++;
 }
 
+// Escreve a tabela com cada questão que acertou, quantos pontos fez e quais numeros foram marcados
 function escreverTabela() {
 	document.write("<table>");
 	for (var i = 0; i < CATEGORIAS.length; i++) {
