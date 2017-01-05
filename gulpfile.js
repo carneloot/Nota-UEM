@@ -31,7 +31,7 @@ gulp.task('sass', function() {
 
 gulp.task('js', function() {
 		return gulp.src([dirs.source + '/assets/js/*.js', '!' + dirs.source + '/assets/js/**/_*.js'])
-		.pipe(uglify('functions.min.js'))
+		.pipe(uglify())
 		.pipe(gulp.dest(dirs.site + '/assets/js/'));
 });
 

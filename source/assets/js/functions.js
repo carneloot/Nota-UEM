@@ -22,6 +22,11 @@ function n(n) {
 	return n > 9 ? "" + n : "0" + n;
 }
 
+// Retorna o numero formatado com virgulas no lugar de pontos
+function numBR(num) {
+	return num.toString().replace('.',',');
+}
+
 // Converte o numero em binario e deixa com 5 caracteres
 function num2Bin(num) {
 	return "000000".substring((num.toString(2) + "").length, 5) + num.toString(2);
@@ -66,25 +71,48 @@ for (var i = 0; i < MARCADAS.length; i++) {
 
 // Escreve a tabela com cada questão que acertou, quantos pontos fez e quais numeros foram marcados
 function escreverTabela() {
-	document.write("<table>");
+	var tblQuestoes = "";
+	tblQuestoes += "<table>";
 	for (var i = 0; i < CATEGORIAS.length; i++) {
-		document.write("<tr><th colspan='3'>" + CATEGORIAS[i][0] + "</th></tr>");
+		tblQuestoes += "<tr><th colspan='3'>" + CATEGORIAS[i][0] + "</th></tr>";
 		for (var j = CATEGORIAS[i][1]; j <= CATEGORIAS[i][2]; j++) {
 			if (CORRETAS[j] == -1) {
-				document.write("<tr>");
-				document.write("<td>Questão:&nbsp;" + n(j + 1) + "</td>");
-				document.write("<td>Nota:&nbsp;" + notas[j] + "</td>");
-				document.write("<td>(&nbsp;Anul.&nbsp;)</td>");
-				document.write("</tr>");
+				tblQuestoes += "<tr>";
+				tblQuestoes += "<td>Questão:&nbsp;" + n(j + 1) + "</td>";
+				tblQuestoes += "<td>Nota:&nbsp;" + numBR(notas[j]) + "</td>";
+				tblQuestoes += "<td>(&nbsp;Anul.&nbsp;)</td>";
+				tblQuestoes += "</tr>";
 			} else
 			if (notas[j] > 0) {
-				document.write("<tr>");
-				document.write("<td>Questão:&nbsp;" + n(j + 1) + "</td>");
-				document.write("<td>Nota:&nbsp;" + notas[j] + "</td>");
-				document.write("<td>(&nbsp;" + n(MARCADAS[j]) + "&nbsp;|&nbsp;" + n(CORRETAS[j]) + "&nbsp;)</td>");
-				document.write("</tr>");
+				tblQuestoes += "<tr>";
+				tblQuestoes += "<td>Questão:&nbsp;" + n(j + 1) + "</td>";
+				tblQuestoes += "<td>Nota:&nbsp;" + numBR(notas[j]) + "</td>";
+				tblQuestoes += "<td>(&nbsp;" + n(MARCADAS[j]) + "&nbsp;|&nbsp;" + n(CORRETAS[j]) + "&nbsp;)</td>";
+				tblQuestoes += "</tr>";
 			}
 		}
 	}
-	document.write("</table>");
+	tblQuestoes += "</table>";
+	return tblQuestoes;
+}
+
+
+$(function() {
+	escreverResumos();
+	escreverAcertos();
+	escreverQuestoes();
+})
+
+function escreverResumos() {
+	$('.notas .total span').text(numBR(NOTA_REDACAO + notaQstObj));
+	$('.notas .objetivas span').text(numBR(notaQstObj));
+	$('.notas .redacao span').text(numBR(NOTA_REDACAO));
+}
+
+function escreverAcertos() {
+	$('.acertos').text('Acertos: ' + qstCertas + ' || Zeradas: ' + ( 40 - qstCertas ));
+}
+
+function escreverQuestoes() {
+	$('.questoes').html(escreverTabela());
 }

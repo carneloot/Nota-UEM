@@ -5,16 +5,16 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		link(rel="stylesheet" href="/assets/css/main.css")
 		title Nota PAS-UEM
-		script(src="/assets/js/functions.js")
 
 	body
-		.resumo
-			h2 Nota total: <span><script>document.write(NOTA_REDACAO + notaQstObj)</script></span> / 360
-			h3 Nota questões objetivas: <span><script>document.write(notaQstObj)</script></span> / 240
-			h3 Nota redação: <span><script>document.write(NOTA_REDACAO)</script></span> / 120
+		.notas
+			h2.total Nota total: <span></span> / 360
+			h3.objetivas Nota questões objetivas: <span></span> / 240
+			h3.redacao Nota redação: <span></span> / 120
 
 		.questoes
-			script escreverTabela()
 
-		p
-			script document.write("Acertos:&nbsp;" + qstCertas + "&nbsp;||&nbsp;Zeradas:&nbsp;" + (40 - qstCertas))
+		.acertos
+
+	script(src="/assets/js/jquery-3.1.1.min.js")
+	script(src="/assets/js/functions.js")
