@@ -1,0 +1,29 @@
+{
+  "name": "nota-pas",
+  "version": "0.0.0",
+  "description": "Um site para calcular a nota do vestibular o PAS-UEM",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matheus Carnelutt",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-autoprefixer": "~3.1.1",
+    "gulp-pug": "~3.2.0",
+    "gulp-ruby-sass": "~2.1.1",
+    "gulp-sourcemaps": "~1.9.1",
+    "gulp-uglify": "~2.0.0",
+    "gulp-webserver": "^0.9.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MathCarnelutt/Nota-PAS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MathCarnelutt/Nota-PAS/issues"
+  },
+  "homepage": "https://github.com/MathCarnelutt/Nota-PAS#readme"
+}
