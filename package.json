@@ -1,6 +1,6 @@
 {
   "name": "nota-pas",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Um site para calcular a nota do vestibular o PAS-UEM",
   "main": "gulpfile.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "gulp-ruby-sass": "~2.1.1",
     "gulp-sourcemaps": "~1.9.1",
     "gulp-uglify": "~2.0.0",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "~0.9.1"
   },
   "dependencies": {},
   "repository": {
