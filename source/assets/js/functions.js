@@ -102,6 +102,7 @@ $(function() {
 	escreverAcertos();
 	escreverQuestoes();
 	ativarCursos();
+	mostrarTabela();
 })
 
 function escreverResumos() {
@@ -125,4 +126,10 @@ function ativarCursos() {
 		else
 			$('.form-curso').attr('disabled','true');
 	});
+}
+
+function mostrarTabela() {
+	$('.notas-tabela .btn-mostrar').on('click', function() {
+		$('.tabela-questoes').toggleClass('show');
+	})
 }

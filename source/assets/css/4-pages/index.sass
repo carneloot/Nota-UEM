@@ -1,6 +1,6 @@
 #index
 	body
-		background: #0E6655
+		background: $accent
 		color: white !important
 
 		h1, h2, h3, h4, h5, h6
@@ -18,7 +18,7 @@
 	footer
 		@extend %content
 
-.form
+section.form
 
 	form
 		width: 100%
@@ -31,7 +31,7 @@
 	input,
 	select
 		display: block
-		background-color: #73C6B6
+		background-color: $accent-light
 		color: #fff
 		border: none
 		outline: none
@@ -67,14 +67,10 @@
 		color: fade-out(white, .6)
 
 	select[disabled]
-		background: darken(#73C6B6, 20%)
+		background: darken($accent-light, 20%)
 
 	input[type="submit"]
-		display: block
-		font-size: 20px
-		padding: .7em 1em
-		margin: 30px auto
-		cursor: pointer
+		@extend %botao
 		box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.7)
 		transition: all .2s ease-in-out
 
@@ -114,10 +110,83 @@
 				&:nth-child(4n + 1)
 					margin-left: 0
 
-.notas
-	table, th, td, tr
+section.notas
+	// display: none
+
+	.notas-tabela
+		text-align: center
+		overflow-y: hidden
+
+	.tabela-questoes
+		background: fade-out(white, 0.7)
+		color: white
 		border-collapse: collapse
-		border: 1px solid red
+		width: 100%
+		margin: 20px 0
+
+		td
+			padding: 5px 10px
+		th
+			padding: 10px
+
+		tbody
+			th
+				color: white
+				text-align: left
+				border-bottom: 1px solid fade-out(#fff, 0.7)
+
+			td
+				text-align: center
+				border-right: 1px solid fade-out(#fff, 0.7)
+				width: 20%
+
+				&::before
+					content: "Questão "
+
+				span::after
+					content: ":"
+
+				@media (max-width: 640px)
+					&::before
+						content: "Qst. "
+
+				@media (max-width: 400px)
+					&::before
+						content: ""
+
+					span
+						display: inline-block
+						font-weight: 700
+						width: 100%
+						background: fade-out($accent, 0.7)
+						border-radius: 5px
+
+						&::after
+							content: ""
+
+				&:last-child
+					border: none
+
+		tfoot
+			th
+				text-align: right
+				border-right: 1px solid fade-out(#fff, 0.7)
+
+			td
+				text-align: left
+
+	.notas-resumo
+		text-align: center
+
+		div[class^="nota-"]
+			font-size: 24px
+
+			@media (max-width: 400px)
+				font-size: 20px
+
+		span
+			display: block
+			font-size: 1.5em
 
 @media (max-width: 640px)
 	.form

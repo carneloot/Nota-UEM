@@ -78,3 +78,5 @@ jspm_packages
 build/
 
 source/assets/css/1-tools/bourbon
+
+assets/

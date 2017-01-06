@@ -11,6 +11,7 @@ html#index
 		header
 			h1 Cálculo de nota PAS-UEM
 		section.form: form
+			input(name="calcular" value="true" type="hidden")
 			fieldset.form-info
 				label Série
 					select.form-serie(name="serie" required)
@@ -59,9 +60,80 @@ html#index
 						min="0" max="31" step="1"
 					)
 
-			input(type="submit" value="Calcular")
+			input.btn-calcular(type="submit" value="Calcular")
 		section.notas
-			
+			.notas-resumo
+				.nota-total Nota total <span>360 / 360</span>
+				.nota-objetivas Nota das questões objetivas <span>240 / 240</span>
+				.nota-redacao Nota da Redação <span>120 / 120</span>
+
+			.notas-tabela
+				table.tabela-questoes
+					tbody
+						tr
+							th(colspan="5" scope="colgroup") Conhecimentos Gerais
+						tr
+							td <span>01</span> 6,0
+							td <span>02</span> 3,0
+							td <span>03</span> 1,5
+							td <span>04</span> 4,5
+							td <span>05</span> 6,0
+						tr
+							td <span>06</span> 6,0
+							td <span>07</span> 3,0
+							td <span>08</span> 1,5
+							td <span>09</span> 4,5
+							td <span>10</span> 6,0
+						tr
+							td <span>11</span> 6,0
+							td <span>12</span> 3,0
+							td <span>13</span> 1,5
+							td <span>14</span> 4,5
+							td <span>15</span> 6,0
+						tr
+							td <span>16</span> 6,0
+							td <span>17</span> 3,0
+							td <span>18</span> 1,5
+							td <span>19</span> 4,5
+							td <span>20</span> 6,0
+						tr
+							th(colspan="5" scope="colgroup") Lingua Portuguesa
+						tr
+							td <span>21</span> 6,0
+							td <span>22</span> 3,0
+							td <span>23</span> 1,5
+							td <span>24</span> 4,5
+							td <span>25</span> 6,0
+						tr
+							td <span>26</span> 6,0
+							td <span>27</span> 3,0
+							td <span>28</span> 1,5
+							td <span>29</span> 4,5
+							td <span>30</span> 6,0
+						tr
+							th(colspan="5" scope="colgroup") Lingua Estrangeira
+						tr
+							td <span>31</span> 6,0
+							td <span>32</span> 3,0
+							td <span>33</span> 1,5
+							td <span>34</span> 4,5
+							td <span>35</span> 6,0
+						tr
+							td <span>36</span> 6,0
+							td <span>37</span> 3,0
+							td <span>38</span> 1,5
+							td <span>39</span> 4,5
+							td <span>40</span> 6,0
+					tfoot
+						tr: td(colspan="5")
+						tr
+							td(colspan="2")
+							th(scope="row" colspan="2") Não Zeradas
+							td 20
+						tr
+							td(colspan="2")
+							th(scope="row" colspan="2") Zeradas
+							td 20
 		footer
 
 	script(src="/assets/js/script.js")

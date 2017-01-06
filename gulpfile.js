@@ -60,7 +60,8 @@ gulp.task('webserver', () => {
 	return gulp.src(dirs.site)
 				.pipe(webserver({
 					open: true,
-					host: '0.0.0.0'
+					host: '0.0.0.0',
+					livereload: true
 				}))
 });
 
