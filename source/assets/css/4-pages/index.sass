@@ -1,22 +1,21 @@
-#index
-	body
-		background: $accent
-		color: white !important
+body
+	background: $accent
+	color: white !important
 
-		h1, h2, h3, h4, h5, h6
-			color: inherit
+	h1, h2, h3, h4, h5, h6
+		color: inherit
 
-		h1
-			font-size: 54px
-			text-align: center
+	h1
+		font-size: 54px
+		text-align: center
 
-			@media (max-width: 400px)
-				font-size: 46px
+		@media (max-width: 400px)
+			font-size: 46px
 
-	header,
-	section,
-	footer
-		@extend %content
+header,
+section,
+footer
+	@extend %content
 
 section.form
 
@@ -111,7 +110,7 @@ section.form
 					margin-left: 0
 
 section.notas
-	// display: none
+	display: none
 
 	.notas-tabela
 		text-align: center
@@ -133,12 +132,15 @@ section.notas
 			th
 				color: white
 				text-align: left
-				border-bottom: 1px solid fade-out(#fff, 0.7)
+				border-bottom: 1px solid $cor-borda-tabela
 
 			td
 				text-align: center
-				border-right: 1px solid fade-out(#fff, 0.7)
+				border-right: 1px solid $cor-borda-tabela
 				width: 20%
+
+				&:nth-child(5n)
+					border: none
 
 				&::before
 					content: "Questão "
@@ -164,13 +166,10 @@ section.notas
 						&::after
 							content: ""
 
-				&:last-child
-					border: none
-
 		tfoot
 			th
 				text-align: right
-				border-right: 1px solid fade-out(#fff, 0.7)
+				border-right: 1px solid $cor-borda-tabela
 
 			td
 				text-align: left
@@ -187,6 +186,40 @@ section.notas
 		span
 			display: block
 			font-size: 1.5em
+
+footer
+	padding: 10px
+	text-align: center
+
+.fork
+	position: absolute
+	display: flex
+	align-items: center
+	top: 10px
+	left: 10px
+	border-radius: 50%
+	+size(56px)
+	background: $accent-light
+	color: $accent
+	line-height: 1
+	font-size: 14px
+	font-weight: 700
+	text-align: center
+	transition: 0.2s all ease-in-out
+	box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
+
+	&:active,
+	&:hover,
+	&:visited
+		color: $accent
+
+	&:hover
+		box-shadow: 7px 7px 6px rgba(0,0,0,0.1)
+		transform: translate(-5px, -5px)
+
+
+	span
+		display: block
 
 @media (max-width: 640px)
 	.form

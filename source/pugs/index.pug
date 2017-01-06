@@ -1,13 +1,22 @@
 include _vars.pug
 doctype html
-html#index
+html
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		link(rel="stylesheet" href="/assets/css/main.css")
+		link(rel="stylesheet" href="./assets/css/main.css")
 		title Nota PAS-UEM
+		link(rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png")
+		link(rel="icon" type="image/png" href="./assets/img/favicon-32x32.png" sizes="32x32")
+		link(rel="icon" type="image/png" href="./assets/img/favicon-16x16.png" sizes="16x16")
+		link(rel="manifest" href="./assets/img/manifest.json")
+		link(rel="mask-icon" href="./assets/img/safari-pinned-tab.svg" color="#5bbad5")
+		link(rel="shortcut icon" href="./assets/img/favicon.ico")
+		meta(name="msapplication-config" content="./assets/img/browserconfig.xml")
+		meta(name="theme-color" content="#0e6655")
 
 	body
+		a.fork(href="https://github.com/MathCarnelutt/Nota-PAS" target="_blank"): span Fork on Github
 		header
 			h1 Cálculo de nota PAS-UEM
 		section.form: form
@@ -16,12 +25,12 @@ html#index
 				label Série
 					select.form-serie(name="serie" required)
 						option(value="" selected) -
-						option(value="1") 1º ano
-						option(value="2") 2º ano
-						option(value="3") 3º ano
+						option(value="1ano") 1º ano
+						option(value="2ano") 2º ano
+						option(value="3ano") 3º ano
 
 				label Língua Estrangeira
-					select.form-lingua-estrangeira(name="linga-estrangeira" required)
+					select.form-lingua-estrangeira(name="lingua-estrangeira" required)
 						option(value="" selected) -
 						option(value="ingles") Inglês
 						option(value="espanhol") Espanhol
@@ -63,77 +72,15 @@ html#index
 			input.btn-calcular(type="submit" value="Calcular")
 		section.notas
 			.notas-resumo
-				.nota-total Nota total <span>360 / 360</span>
-				.nota-objetivas Nota das questões objetivas <span>240 / 240</span>
-				.nota-redacao Nota da Redação <span>120 / 120</span>
+				.nota-total Nota total <span>0 / 360</span>
+				.nota-objetivas Nota das questões objetivas <span>0 / 240</span>
+				.nota-redacao Nota da Redação <span>0 / 120</span>
 
 			.notas-tabela
 				table.tabela-questoes
-					tbody
-						tr
-							th(colspan="5" scope="colgroup") Conhecimentos Gerais
-						tr
-							td <span>01</span> 6,0
-							td <span>02</span> 3,0
-							td <span>03</span> 1,5
-							td <span>04</span> 4,5
-							td <span>05</span> 6,0
-						tr
-							td <span>06</span> 6,0
-							td <span>07</span> 3,0
-							td <span>08</span> 1,5
-							td <span>09</span> 4,5
-							td <span>10</span> 6,0
-						tr
-							td <span>11</span> 6,0
-							td <span>12</span> 3,0
-							td <span>13</span> 1,5
-							td <span>14</span> 4,5
-							td <span>15</span> 6,0
-						tr
-							td <span>16</span> 6,0
-							td <span>17</span> 3,0
-							td <span>18</span> 1,5
-							td <span>19</span> 4,5
-							td <span>20</span> 6,0
-						tr
-							th(colspan="5" scope="colgroup") Lingua Portuguesa
-						tr
-							td <span>21</span> 6,0
-							td <span>22</span> 3,0
-							td <span>23</span> 1,5
-							td <span>24</span> 4,5
-							td <span>25</span> 6,0
-						tr
-							td <span>26</span> 6,0
-							td <span>27</span> 3,0
-							td <span>28</span> 1,5
-							td <span>29</span> 4,5
-							td <span>30</span> 6,0
-						tr
-							th(colspan="5" scope="colgroup") Lingua Estrangeira
-						tr
-							td <span>31</span> 6,0
-							td <span>32</span> 3,0
-							td <span>33</span> 1,5
-							td <span>34</span> 4,5
-							td <span>35</span> 6,0
-						tr
-							td <span>36</span> 6,0
-							td <span>37</span> 3,0
-							td <span>38</span> 1,5
-							td <span>39</span> 4,5
-							td <span>40</span> 6,0
-					tfoot
-						tr: td(colspan="5")
-						tr
-							td(colspan="2")
-							th(scope="row" colspan="2") Não Zeradas
-							td 20
-						tr
-							td(colspan="2")
-							th(scope="row" colspan="2") Zeradas
-							td 20
-		footer
 
-	script(src="/assets/js/script.js")
+		footer
+			.copyright &copy; Matheus Carnelutt - 2017
+
+	script(src="./assets/js/libs.js")
+	script(src="./assets/js/script.js")

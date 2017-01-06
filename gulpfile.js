@@ -30,9 +30,13 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-		return gulp.src([dirs.source + '/assets/js/*.js'])
-		.pipe(concat('script.js'))
-		.pipe(gulp.dest(dirs.site + '/assets/js/'));
+	gulp.src([dirs.source + '/assets/js/**/*.js', '!' + dirs.source + '/assets/js/libs/*.js'])
+			.pipe(concat('script.js'))
+			.pipe(gulp.dest(dirs.site + '/assets/js/'));
+
+	gulp.src([dirs.source + '/assets/js/libs/*.js'])
+			.pipe(concat('libs.js'))
+			.pipe(gulp.dest(dirs.site + '/assets/js/'));
 });
 
 // Watch task

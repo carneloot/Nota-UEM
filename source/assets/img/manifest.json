@@ -1,0 +1,12 @@
+{
+	"name": "Nota PAS",
+	"icons": [
+		{
+			"src": "\/assets\/img\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#0e6655",
+	"display": "standalone"
+}
