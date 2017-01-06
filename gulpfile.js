@@ -4,7 +4,7 @@ var gulp = require('gulp'),
 		srcmaps = require('gulp-sourcemaps'),
 		prefix = require('gulp-autoprefixer'),
 		webserver = require('gulp-webserver'),
-		uglify = require('gulp-uglify');
+		concat = require('gulp-concat');
 
 var dirs = {
 	site: 'build',
@@ -30,8 +30,8 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-		return gulp.src([dirs.source + '/assets/js/*.js', '!' + dirs.source + '/assets/js/**/_*.js'])
-		.pipe(uglify())
+		return gulp.src([dirs.source + '/assets/js/*.js'])
+		.pipe(concat('script.js'))
 		.pipe(gulp.dest(dirs.site + '/assets/js/'));
 });
 

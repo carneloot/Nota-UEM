@@ -101,6 +101,7 @@ $(function() {
 	escreverResumos();
 	escreverAcertos();
 	escreverQuestoes();
+	ativarCursos();
 })
 
 function escreverResumos() {
@@ -115,4 +116,13 @@ function escreverAcertos() {
 
 function escreverQuestoes() {
 	$('.questoes').html(escreverTabela());
+}
+
+function ativarCursos() {
+	$('.form-serie').on("change", function() {
+		if ( $(this).val() == '3' )
+			$('.form-curso').removeAttr('disabled');
+		else
+			$('.form-curso').attr('disabled','true');
+	});
 }

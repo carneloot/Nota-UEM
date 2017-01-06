@@ -1,14 +1,4 @@
--function n(n) {
--	return n > 9 ? "" + n : "0" + n;
--}
-
-- function cursoFormat(nome) {
-- 	var replaceChars = {'ú':'u','ç':'c','ã':'a','á':'a','â':'a','ê':'e','é':'e','õ':'o','ô':'o','ó':'o','í':'i',' ':'-'};
--		return nome.toLowerCase().replace(/ú|ç|ã|á|â|ê|é|õ|ô|ó|í| /g,function(match) {return replaceChars[match];});
-- }
-
-- const cursos = ['Administração','Agronomia','Arquitetura e Urbanismo','Artes Cênicas','Artes Visuais','Biomedicina','Bioquímica','Ciência da Computação','Ciências Biológicas','Ciências Contábeis','Ciências Econômicas','Ciências Sociais','Comunicação e Multimeios','Direito','Educação Física','Enfermagem','Engenharia Civil','Engenharia de Alimentos','Engenharia de Produção','Engenharia Elétrica','Engenharia Mecânica','Engenharia Química','Estatística','Farmácia','Filosofia','Física','Geografia','História','Informática','Letras','Matemática','Medicina','Música','Odontologia','Pedagogia','Psicologia','Química','Secretariado Executivo Trilíngue','Tecnologia em Biotecnologia','Zootecnia']
-
+include _vars.pug
 doctype html
 html#index
 	head
@@ -20,54 +10,58 @@ html#index
 	body
 		header
 			h1 Cálculo de nota PAS-UEM
-		section.form: form()
-			.form-info
-				fieldset
-					label Série
-						select.form-serie(name="serie" required)
-							option(value="" selected) -
-							option(value="1") 1º ano
-							option(value="2") 2º ano
-							option(value="3") 3º ano
+		section.form: form
+			fieldset.form-info
+				label Série
+					select.form-serie(name="serie" required)
+						option(value="" selected) -
+						option(value="1") 1º ano
+						option(value="2") 2º ano
+						option(value="3") 3º ano
 
-					label Língua Estrangeira
-						select.form-lingua-estrangeira(name="linga-estrangeira" required)
-							option(value="" selected) -
-							option(value="ingles") Inglês
-							option(value="espanhol") Espanhol
-							option(value="frances") Francês
+				label Língua Estrangeira
+					select.form-lingua-estrangeira(name="linga-estrangeira" required)
+						option(value="" selected) -
+						option(value="ingles") Inglês
+						option(value="espanhol") Espanhol
+						option(value="frances") Francês
 
-					label Nota redação
-						input.redacao(placeholder="000"
-							name="redacao"
-							maxlength="3"
-							autocomplete="off"
-							type="number"
-							required
-							min="0" max="120" step="1" value="0"
-						)
+				label Nota redação
+					input.form-redacao(placeholder="000"
+						name="redacao"
+						maxlength="3"
+						autocomplete="off"
+						type="number"
+						required
+						min="0" max="120" step="1" value="0"
+					)
 
-					label Curso
-						select.curso(name="curso" type="textfield" disabled)
-							option(value="" selected) -
-							for curso in cursos
-								option(value=cursoFormat(curso)) #{curso}
+				label Ano da prova
+					select.form-anos(name="ano" required)
+						option(value="" selected) -
+						for ano in anos
+							option(value=ano) #{ano}
 
-			.form-quest
-				fieldset
-					- for (var i = 01; i <= 40; i++)
-						input.questao(placeholder=n(i)
-							name="qst-" + i
-							maxlength="2"
-							autocomplete="off"
-							type="number"
-							required
-							min="0" max="31" step="1"
-						)
+				label Curso
+					select.form-curso(name="curso" required disabled)
+						option(value="" selected) -
+						for curso in cursos
+							option(value=cursoFormat(curso)) #{curso}
+
+			fieldset.form-quest
+				- for (var i = 01; i <= 40; i++)
+					input.questao(placeholder=n(i)
+						name="qst-" + i
+						maxlength="2"
+						autocomplete="off"
+						type="number"
+						required
+						min="0" max="31" step="1"
+					)
 
 			input(type="submit" value="Calcular")
 		section.notas
+			
 		footer
 
-	script(src="/assets/js/jquery-3.1.1.min.js")
-	script(src="/assets/js/functions.js")
+	script(src="/assets/js/script.js")
