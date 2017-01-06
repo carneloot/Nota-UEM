@@ -14,11 +14,13 @@ html#index
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		//- link(rel="stylesheet" href="/assets/css/main.css")
+		link(rel="stylesheet" href="/assets/css/main.css")
 		title Nota PAS-UEM
 
 	body
-		.form: form()
+		header
+			h1 Cálculo de nota PAS-UEM
+		section.form: form()
 			.form-info
 				fieldset
 					label Série
@@ -64,16 +66,8 @@ html#index
 						)
 
 			input(type="submit" value="Calcular")
-
-		//- .notas
-			h2.total Nota total: <span></span> / 360
-			h3.objetivas Nota questões objetivas: <span></span> / 240
-			h3.redacao Nota redação: <span></span> / 120
-
-		//- .questoes
-
-		//- .acertos
-
+		section.notas
+		footer
 
 	script(src="/assets/js/jquery-3.1.1.min.js")
 	script(src="/assets/js/functions.js")

@@ -3,93 +3,112 @@
 		background: #0E6655
 		color: white !important
 
-		h2, h3
+		h1, h2, h3, h4, h5, h6
 			color: inherit
 
-		h2
-			font-size: 26px
-		h3
-			font-size: 20px
+		h1
+			font-size: 54px
+			text-align: center
 
-	.questoes table
+			@media (max-width: 400px)
+				font-size: 46px
+
+	header,
+	section,
+	footer
+		@extend %content
+
+.form
+
+	form
+		width: 100%
+
+	fieldset
+		margin: 0 0 30px
+		padding: 0
+		border: none
+
+	input,
+	select
+		display: block
+		background-color: #73C6B6
+		color: #fff
+		border: none
+		outline: none
+		padding: 0.5em
+		border-radius: 5px
+		text-align: center
+
+	label
+		display: inline-block
+		margin: 10px 20px 10px 0
+
+		&:nth-of-type(4)
+			display: block
+
+	// Remove o Spinner dos input de numero
+
+	input[type="number"]::-webkit-outer-spin-button,
+	input[type="number"]::-webkit-inner-spin-button
+		-webkit-appearance: none
 		margin: 0
 
-		th
-			text-align: left
+	input[type="number"]
+		-moz-appearance: textfield
 
-		td:first-child
-			width: 100px
+	input[type="number"]::placeholder
+		color: fade-out(white, .6)
 
-		td
-			width: 80px
-			text-align: left
+	select[disabled]
+		background: darken(#73C6B6, 20%)
 
-	.notas
-		h2,h3
-			margin: 0px
-
-			span
-				font-size: 2em
-
-		h3:last-child
-			margin-bottom: 20px
-
-	.acertos
-		font-size: 18px
-		margin: 20px 0
-
-	.form
-		max-width: 80px * 8
+	input[type="submit"]
+		display: block
+		font-size: 20px
+		padding: .7em 1em
 		margin: 0 auto
+		cursor: pointer
+		box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.7)
+		transition: all .2s ease-in-out
 
-		@media (max-width: 639px)
-			max-width: 80px * 5
-
-		@media (max-width: 399px)
-			max-width: 80px * 4
-
-		@media (max-width: 319px)
-			max-width: 80px * 2
-
-		fieldset
-			margin: 0 0 30px
-			padding: 0
-			border: none
-
-		input,
-		select
-			background-color: #73C6B6
-			color: #fff
-			border: none
-			outline: none
-			padding: 0.5em
-			border-radius: 5px
-
-		label
-			display: block
-			margin: 10px 0
-
-			&:last-of-type
-				margin-bottom: 0
-
-		// Remove o Spinner dos input de numero
-
-		input[type="number"]::-webkit-outer-spin-button,
-		input[type="number"]::-webkit-inner-spin-button
-			-webkit-appearance: none
-			margin: 0
-
-		input[type="number"]
-			-moz-appearance: textfield
-
-		input[type="number"]::placeholder
-			color: fade-out(white, .6)
+		&:hover
+			transform: translateY(-10px)
+			box-shadow: 0px 25px 10px -15px rgba(0,0,0,0.2)
 
 	.form-quest
 
 		input.questao
+			display: inline-block
 			font-size: 30px
 			border-radius: 50%
 			+size(2.2em)
 			text-align: center
+			line-height: 1
 			margin: 5px
+
+			@media (min-width: 640px)
+				&:nth-child(8n)
+					margin-right: 0
+
+				&:nth-child(8n + 1)
+					margin-left: 0
+
+			@media (max-width: 640px) and (min-width: 400px)
+				&:nth-child(5n)
+					margin-right: 0
+
+				&:nth-child(5n + 1)
+					margin-left: 0
+
+			@media (max-width: 400px)
+				&:nth-child(4n)
+					margin-right: 0
+
+				&:nth-child(4n + 1)
+					margin-left: 0
+
+@media (max-width: 640px)
+	.form .form-info
+		input,
+		select
+			padding: 1em
