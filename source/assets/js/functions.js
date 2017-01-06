@@ -1,6 +1,8 @@
 // Definindo variáveis
 const MARCADAS = [12, 19, 02, 22, 24, 10, 17, 06, 26, 10, 15, 13, 18, 04, 02, 05, 17, 10, 13, 06, 13, 23, 17, 10, 03, 16, 03, 09, 24, 22, 22, 11, 27, 19, 12, 02, 30, 13, 25, 20];
 
+const NOTA_REDACAO = 0;
+
 const CORRETAS = [07, 19, 13, 18, 04, 14, 29, 16, 23, 10, 13, 03, 02, 14, 23, 01, 25, 18, 13, 06, 10, 23, 05, 17, 18, 12, 03, 09, 24, 22, 17, 10, 25, 23, 28, 18, 28, 12, 29, 20];
 
 const CATEGORIAS = [
@@ -10,8 +12,6 @@ const CATEGORIAS = [
 	['Específica 1 (Física)', 30, 34],
 	['Específica 2 (Matemática)', 35, 39]
 ];
-
-const NOTA_REDACAO = 0;
 
 var notas = [],
 	qstCertas = 0,

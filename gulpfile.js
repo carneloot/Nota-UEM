@@ -59,7 +59,8 @@ gulp.task('copyFiles', function(){
 gulp.task('webserver', () => {
 	return gulp.src(dirs.site)
 				.pipe(webserver({
-					open: true
+					open: true,
+					host: '0.0.0.0'
 				}))
 });
 

@@ -4,4 +4,4 @@ Esse é um projeto dedicado a construção de um site para calcular a nota do PA
 
 Ainda está em uma fase completamente inicial, porém vou tentar avancá-lo o mais rápido possivel.
 
-O projeto usa **GULP**, **SASS**, **Pug** e **jQuery**
+O projeto usa **Gulp**, **SASS**, **Pug** e **jQuery**.
