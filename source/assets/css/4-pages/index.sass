@@ -214,7 +214,18 @@ section.notas
 
 footer
 	padding: 10px
-	text-align: center
+	display: flex
+	justify-content: space-between
+
+	a
+		display: block
+
+	@media (max-width: 400px)
+		flex-direction: column
+		align-items: center
+
+		a
+			padding: .5em
 
 .fork
 	position: absolute
