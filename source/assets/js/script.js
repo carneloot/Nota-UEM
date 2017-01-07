@@ -54,17 +54,13 @@ function setVariables() {
 	for (var i = 1 ; i <= 40 ; i++)
 		questoesMarcadas.push(parseInt(getUrlParameter('qst-' + i), 10));
 
-	switch (ano) {
-		case '2016':
-			questoesCorretas = questoesCorretas.concat(_2016[serie]['conhecimentos-gerais']);
-			questoesCorretas = questoesCorretas.concat(_2016[serie]['portugues-literatura']);
-			questoesCorretas = questoesCorretas.concat(_2016[serie][linguaEstrangeira]);
-			if (serie == '3ano') {
-				questoesCorretas = questoesCorretas.concat(_2016[serie][especificas[0]]);
-				questoesCorretas = questoesCorretas.concat(_2016[serie][especificas[1]]);
-			}
-			break;
-	}
+		questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['conhecimentos-gerais']);
+		questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['portugues-literatura']);
+		questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][linguaEstrangeira]);
+		if (serie == '3ano') {
+			questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][especificas[0]]);
+			questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][especificas[1]]);
+		}
 }
 
 // Calcula as notas e mostra na tabela
