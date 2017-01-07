@@ -135,7 +135,10 @@ function calculaNota() {
 				htmlTable += '<tr>';
 				rowNumber++;
 			}
-			htmlTable += '<td><span>' + n(j + 1) + '</span> ' + nota(notas[j]) + '</td>';
+			if (questoesCorretas[j] == -1)
+				htmlTable += '<td class="questao-anulada"><span>' + n(j + 1) + '</span> </td>';
+			else
+				htmlTable += '<td><span>' + n(j + 1) + '</span> ' + nota(notas[j]) + '</td>';
 			if (j == categorias[i][2] || j == (categorias[i][1] + 5 * rowNumber) - 1) {
 				htmlTable += '</tr>';
 			}
@@ -147,13 +150,15 @@ function calculaNota() {
 	htmlTable += '<tr><td colspan="5"></td></tr>'
 
 	htmlTable += '<tr>'
-	htmlTable += '<td colspan="2"></td>'
+	if (questoesCorretas.indexOf(-1) != -1)
+		htmlTable += '<td colspan="2" rowspan="2" class="anulada-aviso">*Questões anuladas valem 6 pontos.</td>'
+	else
+		htmlTable += '<td colspan="2" rowspan="2"></td>'
 	htmlTable += '<th colspan="2">Não Zeradas</th>'
 	htmlTable += '<td>' + numQuestoesCertas + '</td>'
 	htmlTable += '</tr>'
 
 	htmlTable += '<tr>'
-	htmlTable += '<td colspan="2"></td>'
 	htmlTable += '<th colspan="2">Zeradas</th>'
 	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>'
 	htmlTable += '</tr>'

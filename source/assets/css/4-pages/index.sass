@@ -180,7 +180,18 @@ section.notas
 						&::after
 							content: ""
 
+			.questao-anulada::after
+				content: 'Anulada*'
+
+				@media (max-width: 640px)
+					content: 'Anul.*'
+
 		tfoot
+			.anulada-aviso
+				font-size: .9em
+				padding: 10px
+				vertical-align: bottom
+
 			th
 				text-align: right
 				border-right: 1px solid $cor-borda-tabela
