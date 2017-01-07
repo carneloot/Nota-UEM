@@ -53,6 +53,12 @@ section.form
 				select
 					width: 100%
 
+	@media (max-width: 640px)
+		.form-info
+			input,
+			select
+				padding: 1em
+
 	// Remove o Spinner dos input de numero
 
 	input[type="number"]::-webkit-outer-spin-button,
@@ -212,6 +218,9 @@ footer
 	transition: 0.2s all ease-in-out
 	box-shadow: 2px 2px 3px rgba(0,0,0,0.5)
 
+	@media (max-width: 640px)
+		display: none
+
 	&:active,
 	&:hover,
 	&:visited
@@ -221,16 +230,8 @@ footer
 		box-shadow: 7px 7px 6px rgba(0,0,0,0.1)
 		transform: translate(-5px, -5px)
 
-
 	span
 		display: block
-
-@media (max-width: 640px)
-	.form
-		.form-info
-			input,
-			select
-				padding: 1em
 
 .tooltip-wrap
 	position: relative
