@@ -10,9 +10,10 @@ $(function() {
 		linguaEstrangeira = getUrlParameter('lingua-estrangeira');
 		redacao = getUrlParameter('redacao');
 		ano = getUrlParameter('ano');
-		curso = getUrlParameter('curso');
-		if (serie == '3ano')
+		if (serie == '3ano') {
+			curso = getUrlParameter('curso');
 			especificas = _especificas[curso];
+		}
 
 		setInputs();
 		setVariables();
@@ -91,7 +92,7 @@ function calculaNota() {
 			categorias = [
 				['Conhecimentos Gerais', 0, 24],
 				['Português e Literatura', 25, 34],
-				['Língua Estrangeira (' + linguaEstrangeira + ')', 35, 39]
+				['Língua Estrangeira (' + pretty(linguaEstrangeira) + ')', 35, 39]
 			]
 			break;
 
