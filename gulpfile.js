@@ -1,7 +1,6 @@
 var gulp = require('gulp'),
 		pug = require('gulp-pug'),
 		sass = require('gulp-ruby-sass'),
-		srcmaps = require('gulp-sourcemaps'),
 		prefix = require('gulp-autoprefixer'),
 		webserver = require('gulp-webserver'),
 		concat = require('gulp-concat');
@@ -22,10 +21,9 @@ gulp.task('pug', function() {
 // SASS + Autoprefixer + sourcemaps Task
 
 gulp.task('sass', function() {
-	return sass(dirs.source + '/assets/css/main.sass', { sourcemap: true, style: 'compact' })
+	return sass(dirs.source + '/assets/css/main.sass', { style: 'compact' })
 		.on('error', sass.logError)
 		.pipe(prefix('last 15 versions'))
-		.pipe(srcmaps.write('/'))
 		.pipe(gulp.dest(dirs.site + '/assets/css'));
 });
 

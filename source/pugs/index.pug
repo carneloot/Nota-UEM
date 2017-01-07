@@ -1,10 +1,12 @@
+- var version = Math.floor(Math.random() * 1000 + 1);
+
 include _vars.pug
 doctype html
 html
 	head
 		meta(charset="UTF-8")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		link(rel="stylesheet" href="./assets/css/main.css")
+		link(rel="stylesheet" href="./assets/css/main.css?v=" + version)
 		title Nota PAS-UEM
 		link(rel="apple-touch-icon" sizes="180x180" href="./assets/img/apple-touch-icon.png")
 		link(rel="icon" type="image/png" href="./assets/img/favicon-32x32.png" sizes="32x32")
@@ -82,6 +84,6 @@ html
 		footer
 			.copyright &copy; Matheus Carnelutt - 2017
 
-	script(src="./assets/js/libs.js")
-	script(src="./assets/js/script.js")
+	script(src="./assets/js/libs.js?v=" + version)
+	script(src="./assets/js/script.js?v=" + version)
 	include _analyticstracking.html
