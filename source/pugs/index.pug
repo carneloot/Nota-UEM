@@ -39,14 +39,16 @@ html
 						option(value="frances") Francês
 
 				label Nota redação
-					input.form-redacao(placeholder="000"
-						name="redacao"
-						maxlength="3"
-						autocomplete="off"
-						type="number"
-						required
-						min="0" max="120" step="1" value="0"
-					)
+					.tooltip-wrap
+						input.form-redacao(placeholder="000"
+							name="redacao"
+							maxlength="3"
+							autocomplete="off"
+							type="number"
+							required
+							min="0" max="120" step="1" value="0"
+						)
+						.tooltip Se ainda não saiu a nota da redação, deixar o campo em zero.
 
 				label Ano da prova
 					select.form-anos(name="ano" required)

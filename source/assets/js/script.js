@@ -19,6 +19,7 @@ $(function() {
 		setVariables();
 		calculaNota();
 	}
+	showTooltips();
 })
 
 
@@ -107,6 +108,19 @@ function calculaNota() {
 			break;
 	}
 
+	// Coloca 'Reprovado' na frente se zerou a categoria
+
+	for (var i = 0; i < categorias.length; i++) {
+		var notaCategoria = 0;
+
+		for (var j = categorias[i][1]; j <= categorias[i][2]; j++)
+			notaCategoria += notas[j];
+
+		if (notaCategoria == 0)
+			categorias[i][0] += " <span>Reprovado</span>";
+
+	}
+
 	// INICIO Criação tabela notas
 	htmlTable += '<table class="tabela-questoes">';
 
@@ -160,4 +174,13 @@ function calculaNota() {
 	$('.notas-resumo .nota-redacao span').text( nota(redacao) + ' / 120')
 
 	$('section.notas').css('display', 'block');
+}
+
+function showTooltips() {
+	$('.tooltip-wrap').children().first().on('focus', function() {
+		$('.tooltip-wrap .tooltip').addClass('show');
+	})
+	$('.tooltip-wrap').children().first().on('blur', function() {
+		$('.tooltip-wrap .tooltip').removeClass('show');
+	})
 }
