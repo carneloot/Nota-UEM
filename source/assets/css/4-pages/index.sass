@@ -8,6 +8,7 @@ body
 	h1
 		font-size: 54px
 		text-align: center
+		font-weight: 300
 
 		@media (max-width: 400px)
 			font-size: 46px
@@ -144,7 +145,10 @@ section.notas
 				color: white
 				text-align: left
 				border-bottom: 1px solid $cor-borda-tabela
+				+clearfix
+
 				span
+					float: right
 					color: $cor-reprovado
 
 			td

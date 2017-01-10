@@ -36,6 +36,28 @@ const _gabarito = {
 	}
 };
 
+const _categorias = {
+	'2016' : {
+		'3ano' : {
+			'conhecimentos-gerais' : [0, 18],
+			'portugues-literatura' : [19, 25],
+			'lingua-estrangeira' : [26, 29],
+			'especifica-1' : [30, 34],
+			'especifica-2' : [35, 39],
+		},
+		'2ano' : {
+			'conhecimentos-gerais' : [0, 24],
+			'portugues-literatura' : [25, 34],
+			'lingua-estrangeira' : [35, 39]
+		},
+		'1ano' : {
+			'conhecimentos-gerais' : [0, 24],
+			'portugues-literatura' : [25, 34],
+			'lingua-estrangeira' : [35, 39]
+		}
+	}
+}
+
 const _especificas = {
 	'administracao' : ['historia', 'matematica'],
 	'agronomia' : ['biologia', 'quimica'],
