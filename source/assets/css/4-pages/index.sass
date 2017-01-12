@@ -16,11 +16,18 @@ body
 select
 	appearance: none
 
+$tamanho-questao: 79px
 
-header,
-section,
-footer
-	@extend %content
+.container
+	max-width: $tamanho-questao * 8
+	margin: 0 auto
+	padding: 5px
+
+	@media (max-width: 640px)
+		max-width: $tamanho-questao * 5
+
+	@media (max-width: 400px)
+		max-width: $tamanho-questao * 4
 
 section.form
 
@@ -81,7 +88,11 @@ section.form
 		background: darken($accent-light, 20%)
 
 	input[type="submit"]
-		@extend %botao
+		display: block
+		font-size: 20px
+		padding: .7em 1em
+		margin: 30px auto
+		cursor: pointer
 		box-shadow: 0px 10px 10px -10px rgba(0,0,0,0.7)
 		transition: all .2s ease-in-out
 
@@ -89,7 +100,7 @@ section.form
 			transform: translateY(-10px)
 			box-shadow: 0px 25px 10px -15px rgba(0,0,0,0.2)
 
-	.form-quest
+	.form-questoes
 
 		input.questao
 			display: inline-block
@@ -218,18 +229,27 @@ section.notas
 
 footer
 	padding: 10px
-	display: flex
-	justify-content: space-between
 
-	a
-		display: block
+	p
+		max-width: 75%
+		margin: 0 auto 20px
+		text-align: center
+		line-height: 1
+		font-weight: 300
 
-	@media (max-width: 400px)
-		flex-direction: column
-		align-items: center
+	.copyright-wrap
+		display: flex
+		justify-content: space-between
 
 		a
-			padding: .5em
+			display: block
+
+		@media (max-width: 400px)
+			flex-direction: column
+			align-items: center
+
+			a
+				padding: .5em
 
 .fork
 	position: absolute
@@ -259,9 +279,6 @@ footer
 	&:hover
 		box-shadow: 7px 7px 6px rgba(0,0,0,0.1)
 		transform: translate(-5px, -5px)
-
-	span
-		display: block
 
 .tooltip-wrap
 	position: relative
