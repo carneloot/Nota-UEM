@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 		concat = require('gulp-concat');
 
 var dirs = {
-	site: '.',
+	site: 'docs',
 	source: 'source'
 };
 
@@ -18,7 +18,7 @@ gulp.task('pug', function() {
 		.pipe(gulp.dest(dirs.site));
 });
 
-// SASS + Autoprefixer + sourcemaps Task
+// SASS + Autoprefixer
 
 gulp.task('sass', function() {
 	return sass(dirs.source + '/assets/css/main.sass', { style: 'compact' })
