@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 		concat = require('gulp-concat');
 
 var dirs = {
-	site: 'build',
+	site: '.',
 	source: 'source'
 };
 
