@@ -1,6 +1,6 @@
 var questoesCorretas = [],
-		questoesMarcadas = [],
-		serie, linguaEstrangeira, redacao, ano, curso, especificas;
+	questoesMarcadas = [],
+	serie, linguaEstrangeira, redacao, ano, curso, especificas;
 
 $(function() {
 	ativarCursos();
@@ -26,10 +26,10 @@ $(function() {
 // Se alterar a série para 3o ano ativa a opcao de cursos
 function ativarCursos() {
 	$('.form-serie').on("change", function() {
-		if ( $(this).val() == '3ano' )
+		if ($(this).val() == '3ano')
 			$('.form-curso').removeAttr('disabled');
 		else
-			$('.form-curso').attr('disabled','true');
+			$('.form-curso').attr('disabled', 'true');
 	});
 }
 
@@ -51,7 +51,7 @@ function setInputs() {
 
 // Seta as variaveis questoesMarcadas e questoesCorretas
 function setVariables() {
-	for (var i = 1 ; i <= 40 ; i++)
+	for (var i = 1; i <= 40; i++)
 		questoesMarcadas.push(parseInt(getUrlParameter('qst-' + i), 10));
 
 	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['conhecimentos-gerais']);
@@ -66,11 +66,11 @@ function setVariables() {
 // Calcula as notas e mostra na tabela
 function calculaNota() {
 	var notas = [],
-			notaObjetivas = 0;
-			notaTotal = 0,
-			numQuestoesCertas = 0,
-			htmlTable = '',
-			categorias = [];
+		notaObjetivas = 0;
+	notaTotal = 0,
+		numQuestoesCertas = 0,
+		htmlTable = '',
+		categorias = [];
 
 	// Soma todas as notas na var notaObjetivas e adiciona as notas na array notas
 
@@ -100,16 +100,21 @@ function calculaNota() {
 		categorias[4] = ['Específica 2 - ' + pretty(especificas[1]), numerosCategorias['especifica-2'][0], numerosCategorias['especifica-2'][1]];
 	}
 
-	// Coloca 'Reprovado' na frente se zerou a categoria
+	// Coloca 'Reprovado' na frente se zerou a categoria ou a nota se nao zerou
 
 	for (var i = 0; i < categorias.length; i++) {
-		var notaCategoria = 0;
+		var notaCategoria = 0,
+			notaMax = (categorias[i][2] - categorias[i][1] + 1) * 6;
 
 		for (var j = categorias[i][1]; j <= categorias[i][2]; j++)
 			notaCategoria += notas[j];
 
 		if (notaCategoria == 0)
-			categorias[i][0] += "<span>Reprovado</span>";
+			categorias[i][0] += "<span class='reprovado'>Reprovou</span>";
+		else if (notaCategoria == notaMax)
+			categorias[i][0] += "<span class='gabaritado'>Gabaritou (" + nota(notaCategoria) + ")</span>";
+		else
+			categorias[i][0] += "<span class='nota'>Total: " + nota(notaCategoria) + "</span>";
 
 	}
 
@@ -169,9 +174,9 @@ function calculaNota() {
 	$('.tabela-questoes').html(htmlTable);
 	// FIM Criação tabela notas
 
-	$('.notas-resumo .nota-total span').text( nota(notaTotal) + ' / 360')
-	$('.notas-resumo .nota-objetivas span').text( nota(notaObjetivas) + ' / 240')
-	$('.notas-resumo .nota-redacao span').text( nota(redacao) + ' / 120')
+	$('.notas-resumo .nota-total span').text(nota(notaTotal) + ' / 360')
+	$('.notas-resumo .nota-objetivas span').text(nota(notaObjetivas) + ' / 240')
+	$('.notas-resumo .nota-redacao span').text(nota(redacao) + ' / 120')
 
 	$('section.notas').css('display', 'block');
 }

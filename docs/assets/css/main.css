@@ -227,7 +227,9 @@ section.notas .tabela-questoes td { padding: 5px 10px; }
 section.notas .tabela-questoes th { padding: 10px; }
 section.notas .tabela-questoes tbody th { color: white; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 section.notas .tabela-questoes tbody th::after { clear: both; content: ""; display: block; }
-section.notas .tabela-questoes tbody th span { float: right; color: #ec2400; }
+section.notas .tabela-questoes tbody th span { float: right; }
+section.notas .tabela-questoes tbody th .reprovado { color: #ec2400; }
+section.notas .tabela-questoes tbody th .gabaritado { color: #80f58d; }
 section.notas .tabela-questoes tbody td { text-align: center; border-right: 1px solid rgba(255, 255, 255, 0.3); width: 20%; }
 section.notas .tabela-questoes tbody td:nth-child(5n) { border: none; }
 section.notas .tabela-questoes tbody td span { font-weight: 700; display: inline-block; width: 100%; background: rgba(14, 102, 85, 0.3); -webkit-border-radius: 5px; border-radius: 5px; padding: 0; }
