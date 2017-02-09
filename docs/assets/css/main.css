@@ -228,6 +228,7 @@ section.notas .tabela-questoes th { padding: 10px; }
 section.notas .tabela-questoes tbody th { color: white; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
 section.notas .tabela-questoes tbody th::after { clear: both; content: ""; display: block; }
 section.notas .tabela-questoes tbody th span { float: right; }
+@media (max-width: 400px) { section.notas .tabela-questoes tbody th span { float: none; display: block; margin-top: 5px; } }
 section.notas .tabela-questoes tbody th .reprovado { color: #ec2400; }
 section.notas .tabela-questoes tbody th .gabaritado { color: #80f58d; }
 section.notas .tabela-questoes tbody td { text-align: center; border-right: 1px solid rgba(255, 255, 255, 0.3); width: 20%; }
