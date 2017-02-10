@@ -304,12 +304,14 @@ function calculaNota() {
 		for (var j = categorias[i][1]; j <= categorias[i][2]; j++)
 			notaCategoria += notas[j];
 
+		notaCategoria = notaCategoria.toString().replace('.',',');
+
 		if (notaCategoria == 0)
 			categorias[i][0] += "<span class='reprovado'>Reprovou</span>";
 		else if (notaCategoria == notaMax)
-			categorias[i][0] += "<span class='gabaritado'>Gabaritou (" + nota(notaCategoria) + ")</span>";
+			categorias[i][0] += "<span class='gabaritado'>Gabaritou (Total: " + notaCategoria + ")</span>";
 		else
-			categorias[i][0] += "<span class='nota'>Total: " + nota(notaCategoria) + "</span>";
+			categorias[i][0] += "<span class='nota'>Total: " + notaCategoria + "</span>";
 
 	}
 
