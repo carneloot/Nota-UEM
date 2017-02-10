@@ -75,3 +75,4 @@ jspm_packages
 # End of https://www.gitignore.io/api/linux,sass,node
 
 backup.js
+.vscode
