@@ -2,7 +2,7 @@ var questoesCorretas = [],
 	questoesMarcadas = [],
 	serie, linguaEstrangeira, redacao, ano, curso, especificas;
 
-$(function() {
+$(function () {
 	ativarCursos();
 	if (getUrlParameter('calcular') == 'true') {
 		// Pega os valores das variaveis
@@ -20,12 +20,12 @@ $(function() {
 		calculaNota();
 	}
 	showTooltips();
-})
+});
 
 
 // Se alterar a série para 3o ano ativa a opcao de cursos
 function ativarCursos() {
-	$('.form-serie').on("change", function() {
+	$('.form-serie').on('change', function () {
 		if ($(this).val() == '3ano')
 			$('.form-curso').removeAttr('disabled');
 		else
@@ -66,8 +66,8 @@ function setVariables() {
 // Calcula as notas e mostra na tabela
 function calculaNota() {
 	var notas = [],
-		notaObjetivas = 0;
-	notaTotal = 0,
+		notaObjetivas = 0,
+		notaTotal = 0,
 		numQuestoesCertas = 0,
 		htmlTable = '',
 		categorias = [];
@@ -109,14 +109,14 @@ function calculaNota() {
 		for (var j = categorias[i][1]; j <= categorias[i][2]; j++)
 			notaCategoria += notas[j];
 
-		notaCategoria = notaCategoria.toString().replace('.',',');
+		notaCategoria = notaCategoria.toString().replace('.', ',');
 
 		if (notaCategoria == 0)
-			categorias[i][0] += "<span class='reprovado'>Reprovou</span>";
+			categorias[i][0] += '<span class=\'reprovado\'>Reprovou</span>';
 		else if (notaCategoria == notaMax)
-			categorias[i][0] += "<span class='gabaritado'>Gabaritou (Total: " + notaCategoria + ")</span>";
+			categorias[i][0] += '<span class=\'gabaritado\'>Gabaritou (Total: ' + notaCategoria + ')</span>';
 		else
-			categorias[i][0] += "<span class='nota'>Total: " + notaCategoria + "</span>";
+			categorias[i][0] += '<span class=\'nota\'>Total: ' + notaCategoria + '</span>';
 
 	}
 
@@ -128,7 +128,7 @@ function calculaNota() {
 	// Passa por cada categoria em categorias
 	for (var i = 0; i < categorias.length; i++) {
 
-		htmlTable += '<tr><th colspan="5" scope="colgroup">' + categorias[i][0] + '</th></tr>'
+		htmlTable += '<tr><th colspan="5" scope="colgroup">' + categorias[i][0] + '</th></tr>';
 		rowNumber = 0;
 
 		// Passa por todas as notas em cada categorias
@@ -154,40 +154,40 @@ function calculaNota() {
 	}
 	htmlTable += '</tbody>';
 
-	htmlTable += '<tfoot>'
-	htmlTable += '<tr><td colspan="5"></td></tr>'
+	htmlTable += '<tfoot>';
+	htmlTable += '<tr><td colspan="5"></td></tr>';
 
-	htmlTable += '<tr>'
+	htmlTable += '<tr>';
 	if (questoesCorretas.indexOf(-1) != -1)
-		htmlTable += '<td colspan="2" rowspan="2" class="anulada-aviso">*Questões anuladas valem 6 pontos.</td>'
+		htmlTable += '<td colspan="2" rowspan="2" class="anulada-aviso">*Questões anuladas valem 6 pontos.</td>';
 	else
-		htmlTable += '<td colspan="2" rowspan="2"></td>'
-	htmlTable += '<th colspan="2">Não Zeradas</th>'
-	htmlTable += '<td>' + numQuestoesCertas + '</td>'
-	htmlTable += '</tr>'
+		htmlTable += '<td colspan="2" rowspan="2"></td>';
+	htmlTable += '<th colspan="2">Não Zeradas</th>';
+	htmlTable += '<td>' + numQuestoesCertas + '</td>';
+	htmlTable += '</tr>';
 
-	htmlTable += '<tr>'
-	htmlTable += '<th colspan="2">Zeradas</th>'
-	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>'
-	htmlTable += '</tr>'
+	htmlTable += '<tr>';
+	htmlTable += '<th colspan="2">Zeradas</th>';
+	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>';
+	htmlTable += '</tr>';
 
-	htmlTable += '</tfoot>'
+	htmlTable += '</tfoot>';
 
 	$('.tabela-questoes').html(htmlTable);
 	// FIM Criação tabela notas
 
-	$('.notas-resumo .nota-total span').text(nota(notaTotal) + ' / 360')
-	$('.notas-resumo .nota-objetivas span').text(nota(notaObjetivas) + ' / 240')
-	$('.notas-resumo .nota-redacao span').text(nota(redacao) + ' / 120')
+	$('.notas-resumo .nota-total span').text(nota(notaTotal) + ' / 360');
+	$('.notas-resumo .nota-objetivas span').text(nota(notaObjetivas) + ' / 240');
+	$('.notas-resumo .nota-redacao span').text(nota(redacao) + ' / 120');
 
 	$('section.notas').css('display', 'block');
 }
 
 function showTooltips() {
-	$('.tooltip-wrap').children().first().on('focus', function() {
+	$('.tooltip-wrap').children().first().on('focus', function () {
 		$('.tooltip-wrap .tooltip').addClass('show');
-	})
-	$('.tooltip-wrap').children().first().on('blur', function() {
+	});
+	$('.tooltip-wrap').children().first().on('blur', function () {
 		$('.tooltip-wrap .tooltip').removeClass('show');
-	})
+	});
 }

@@ -1,41 +1,41 @@
 function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
+	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+		sURLVariables = sPageURL.split('&'),
+		sParameterName,
+		i;
 
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
+	for (i = 0; i < sURLVariables.length; i++) {
+		sParameterName = sURLVariables[i].split('=');
 
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
-};
+		if (sParameterName[0] === sParam) {
+			return sParameterName[1] === undefined ? true : sParameterName[1];
+		}
+	}
+}
 
 // Se o numero for menor que 10 coloca um 0 na frente
 function n(n) {
-	return n > 9 ? "" + n : "0" + n;
+	return n > 9 ? '' + n : '0' + n;
 }
 
 // Retorna o numero formatado com virgulas no lugar de pontos
 function nota(num) {
 	if (num === parseInt(num, 10))
-		return num.toString() + ",0"
+		return num.toString() + ',0';
 	else
-		return num.toString().replace('.',',');
+		return num.toString().replace('.', ',');
 }
 
 // Converte o numero em binario e deixa com 5 caracteres
 function num2Bin(num) {
-	return "000000".substring((num.toString(2) + "").length, 5) + num.toString(2);
+	return '000000'.substring((num.toString(2) + '').length, 5) + num.toString(2);
 }
 
 // Função que pega os numeros marcados e corretos e retorna a nota
 function getNota(marcado, correto) {
 	// Se a questão for anulada
 	if (correto == -1)
-		return 6
+		return 6;
 
 	// Converte os numeros em binário
 	marcado = num2Bin(marcado);
@@ -62,54 +62,53 @@ function getNota(marcado, correto) {
 // Pega uma especifica feia e retorna bonita
 function pretty(especifica) {
 	var nomes = {
-		'arte' : 'Arte',
-		'biologia' : 'Biologia',
-		'educacao-fisica' : 'Educação Física',
-		'filosofia' : 'Filosofia',
-		'fisica' : 'Física',
-		'geografia' : 'Geografia',
-		'historia' : 'História',
-		'matematica' : 'Matemática',
-		'quimica' : 'Química',
-		'sociologia' : 'Sociologia',
-		'ingles' : 'Inglês',
-		'espanhol' : 'Espanhol',
-		'frances' : 'Francês'
+		'arte': 'Arte',
+		'biologia': 'Biologia',
+		'educacao-fisica': 'Educação Física',
+		'filosofia': 'Filosofia',
+		'fisica': 'Física',
+		'geografia': 'Geografia',
+		'historia': 'História',
+		'matematica': 'Matemática',
+		'quimica': 'Química',
+		'sociologia': 'Sociologia',
+		'ingles': 'Inglês',
+		'espanhol': 'Espanhol',
+		'frances': 'Francês'
 	};
 	return nomes[especifica];
 }
-
-const _gabarito = {
+var _gabarito = {
 	'2016': {
 		'1ano': {
-			'conhecimentos-gerais': [05, 05, 11, 23, 22, 15, 11, 23, 14, 13, 06, 27, 29, 13, 19, 07, 11, 12, 26, 06, 27, 20, 17, 12, 10],
-			'portugues-literatura': [11, 05, 20, 26, 23, 27, 30, 18, 11, 11],
-			'espanhol': [21, 21, 06, 07, 25],
-			'frances': [03, 26, 29, 13, 04],
+			'conhecimentos-gerais': [5, 5, 11, 23, 22, 15, 11, 23, 14, 13, 6, 27, 29, 13, 19, 7, 11, 12, 26, 6, 27, 20, 17, 12, 10],
+			'portugues-literatura': [11, 5, 20, 26, 23, 27, 30, 18, 11, 11],
+			'espanhol': [21, 21, 6, 7, 25],
+			'frances': [3, 26, 29, 13, 4],
 			'ingles': [28, 17, 26, 21, 28]
 		},
 
 		'2ano': {
-			'conhecimentos-gerais': [29, 21, 20, 27, 14, 18, 05, 26, 08, 14, 05, 30, 28, 23, 05, 06, 20, 25, 08, 02, 21, 11, 28, 29, 16],
-			'portugues-literatura': [24, 04, 06, 29, 18, 20, 10, 21, 18, 16],
-			'espanhol': [23, 10, 17, 06, 10],
+			'conhecimentos-gerais': [29, 21, 20, 27, 14, 18, 5, 26, 8, 14, 5, 30, 28, 23, 5, 6, 20, 25, 8, 2, 21, 11, 28, 29, 16],
+			'portugues-literatura': [24, 4, 6, 29, 18, 20, 10, 21, 18, 16],
+			'espanhol': [23, 10, 17, 6, 10],
 			'frances': [13, 18, 22, 14, 25],
-			'ingles': [09, 14, 17, 11, 22]
+			'ingles': [9, 14, 17, 11, 22]
 		},
 
 		'3ano': {
-			'conhecimentos-gerais': [07, 19, 13, 18, 04, 14, 29, 16, 23, 10, 13, 03, 02, 14, 23, 01, 25, 18, 13],
-			'portugues-literatura': [06, 10, 23, 05, 17, 18, 12],
-			'espanhol': [18, 09, 03, 12],
+			'conhecimentos-gerais': [7, 19, 13, 18, 4, 14, 29, 16, 23, 10, 13, 3, 2, 14, 23, 1, 25, 18, 13],
+			'portugues-literatura': [6, 10, 23, 5, 17, 18, 12],
+			'espanhol': [18, 9, 3, 12],
 			'frances': [17, 20, 30, 14],
-			'ingles': [03, 09, 24, 22],
-			'arte': [25, 25, 30, 05, 11],
-			'biologia': [26, 17, 03, 15, 09],
-			'educacao-fisica': [13, 14, 07, 22, 11],
+			'ingles': [3, 9, 24, 22],
+			'arte': [25, 25, 30, 5, 11],
+			'biologia': [26, 17, 3, 15, 9],
+			'educacao-fisica': [13, 14, 7, 22, 11],
 			'filosofia': [14, 25, 23, 26, 15],
 			'fisica': [17, 10, 25, 23, 28],
-			'geografia': [14, 23, 27, 07, 30],
-			'historia': [23, 10, 25, 04, 10],
+			'geografia': [14, 23, 27, 7, 30],
+			'historia': [23, 10, 25, 4, 10],
 			'matematica': [18, 28, 12, 29, 20],
 			'quimica': [17, 28, 11, 20, 13],
 			'sociologia': [15, 21, 13, 17, 19]
@@ -117,7 +116,7 @@ const _gabarito = {
 	}
 };
 
-const _categorias = {
+var _categorias = {
 	'2016': {
 		'3ano': {
 			'conhecimentos-gerais': [0, 18],
@@ -137,9 +136,9 @@ const _categorias = {
 			'lingua-estrangeira': [35, 39]
 		}
 	}
-}
+};
 
-const _especificas = {
+var _especificas = {
 	'administracao': ['historia', 'matematica'],
 	'agronomia': ['biologia', 'quimica'],
 	'arquitetura-e-urbanismo': ['arte', 'matematica'],
@@ -191,13 +190,12 @@ const _especificas = {
 	'tecnologia-em-construcao-civil': ['fisica', 'matematica'],
 	'tecnologia-em-meio-ambiente': ['matematica', 'quimica'],
 	'zootecnia': ['biologia', 'matematica']
-}
-
+};
 var questoesCorretas = [],
 	questoesMarcadas = [],
 	serie, linguaEstrangeira, redacao, ano, curso, especificas;
 
-$(function() {
+$(function () {
 	ativarCursos();
 	if (getUrlParameter('calcular') == 'true') {
 		// Pega os valores das variaveis
@@ -215,12 +213,12 @@ $(function() {
 		calculaNota();
 	}
 	showTooltips();
-})
+});
 
 
 // Se alterar a série para 3o ano ativa a opcao de cursos
 function ativarCursos() {
-	$('.form-serie').on("change", function() {
+	$('.form-serie').on('change', function () {
 		if ($(this).val() == '3ano')
 			$('.form-curso').removeAttr('disabled');
 		else
@@ -261,8 +259,8 @@ function setVariables() {
 // Calcula as notas e mostra na tabela
 function calculaNota() {
 	var notas = [],
-		notaObjetivas = 0;
-	notaTotal = 0,
+		notaObjetivas = 0,
+		notaTotal = 0,
 		numQuestoesCertas = 0,
 		htmlTable = '',
 		categorias = [];
@@ -304,14 +302,14 @@ function calculaNota() {
 		for (var j = categorias[i][1]; j <= categorias[i][2]; j++)
 			notaCategoria += notas[j];
 
-		notaCategoria = notaCategoria.toString().replace('.',',');
+		notaCategoria = notaCategoria.toString().replace('.', ',');
 
 		if (notaCategoria == 0)
-			categorias[i][0] += "<span class='reprovado'>Reprovou</span>";
+			categorias[i][0] += '<span class=\'reprovado\'>Reprovou</span>';
 		else if (notaCategoria == notaMax)
-			categorias[i][0] += "<span class='gabaritado'>Gabaritou (Total: " + notaCategoria + ")</span>";
+			categorias[i][0] += '<span class=\'gabaritado\'>Gabaritou (Total: ' + notaCategoria + ')</span>';
 		else
-			categorias[i][0] += "<span class='nota'>Total: " + notaCategoria + "</span>";
+			categorias[i][0] += '<span class=\'nota\'>Total: ' + notaCategoria + '</span>';
 
 	}
 
@@ -323,7 +321,7 @@ function calculaNota() {
 	// Passa por cada categoria em categorias
 	for (var i = 0; i < categorias.length; i++) {
 
-		htmlTable += '<tr><th colspan="5" scope="colgroup">' + categorias[i][0] + '</th></tr>'
+		htmlTable += '<tr><th colspan="5" scope="colgroup">' + categorias[i][0] + '</th></tr>';
 		rowNumber = 0;
 
 		// Passa por todas as notas em cada categorias
@@ -349,40 +347,40 @@ function calculaNota() {
 	}
 	htmlTable += '</tbody>';
 
-	htmlTable += '<tfoot>'
-	htmlTable += '<tr><td colspan="5"></td></tr>'
+	htmlTable += '<tfoot>';
+	htmlTable += '<tr><td colspan="5"></td></tr>';
 
-	htmlTable += '<tr>'
+	htmlTable += '<tr>';
 	if (questoesCorretas.indexOf(-1) != -1)
-		htmlTable += '<td colspan="2" rowspan="2" class="anulada-aviso">*Questões anuladas valem 6 pontos.</td>'
+		htmlTable += '<td colspan="2" rowspan="2" class="anulada-aviso">*Questões anuladas valem 6 pontos.</td>';
 	else
-		htmlTable += '<td colspan="2" rowspan="2"></td>'
-	htmlTable += '<th colspan="2">Não Zeradas</th>'
-	htmlTable += '<td>' + numQuestoesCertas + '</td>'
-	htmlTable += '</tr>'
+		htmlTable += '<td colspan="2" rowspan="2"></td>';
+	htmlTable += '<th colspan="2">Não Zeradas</th>';
+	htmlTable += '<td>' + numQuestoesCertas + '</td>';
+	htmlTable += '</tr>';
 
-	htmlTable += '<tr>'
-	htmlTable += '<th colspan="2">Zeradas</th>'
-	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>'
-	htmlTable += '</tr>'
+	htmlTable += '<tr>';
+	htmlTable += '<th colspan="2">Zeradas</th>';
+	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>';
+	htmlTable += '</tr>';
 
-	htmlTable += '</tfoot>'
+	htmlTable += '</tfoot>';
 
 	$('.tabela-questoes').html(htmlTable);
 	// FIM Criação tabela notas
 
-	$('.notas-resumo .nota-total span').text(nota(notaTotal) + ' / 360')
-	$('.notas-resumo .nota-objetivas span').text(nota(notaObjetivas) + ' / 240')
-	$('.notas-resumo .nota-redacao span').text(nota(redacao) + ' / 120')
+	$('.notas-resumo .nota-total span').text(nota(notaTotal) + ' / 360');
+	$('.notas-resumo .nota-objetivas span').text(nota(notaObjetivas) + ' / 240');
+	$('.notas-resumo .nota-redacao span').text(nota(redacao) + ' / 120');
 
 	$('section.notas').css('display', 'block');
 }
 
 function showTooltips() {
-	$('.tooltip-wrap').children().first().on('focus', function() {
+	$('.tooltip-wrap').children().first().on('focus', function () {
 		$('.tooltip-wrap .tooltip').addClass('show');
-	})
-	$('.tooltip-wrap').children().first().on('blur', function() {
+	});
+	$('.tooltip-wrap').children().first().on('blur', function () {
 		$('.tooltip-wrap .tooltip').removeClass('show');
-	})
+	});
 }

@@ -1,34 +1,34 @@
-const _gabarito = {
+var _gabarito = {
 	'2016': {
 		'1ano': {
-			'conhecimentos-gerais': [05, 05, 11, 23, 22, 15, 11, 23, 14, 13, 06, 27, 29, 13, 19, 07, 11, 12, 26, 06, 27, 20, 17, 12, 10],
-			'portugues-literatura': [11, 05, 20, 26, 23, 27, 30, 18, 11, 11],
-			'espanhol': [21, 21, 06, 07, 25],
-			'frances': [03, 26, 29, 13, 04],
+			'conhecimentos-gerais': [5, 5, 11, 23, 22, 15, 11, 23, 14, 13, 6, 27, 29, 13, 19, 7, 11, 12, 26, 6, 27, 20, 17, 12, 10],
+			'portugues-literatura': [11, 5, 20, 26, 23, 27, 30, 18, 11, 11],
+			'espanhol': [21, 21, 6, 7, 25],
+			'frances': [3, 26, 29, 13, 4],
 			'ingles': [28, 17, 26, 21, 28]
 		},
 
 		'2ano': {
-			'conhecimentos-gerais': [29, 21, 20, 27, 14, 18, 05, 26, 08, 14, 05, 30, 28, 23, 05, 06, 20, 25, 08, 02, 21, 11, 28, 29, 16],
-			'portugues-literatura': [24, 04, 06, 29, 18, 20, 10, 21, 18, 16],
-			'espanhol': [23, 10, 17, 06, 10],
+			'conhecimentos-gerais': [29, 21, 20, 27, 14, 18, 5, 26, 8, 14, 5, 30, 28, 23, 5, 6, 20, 25, 8, 2, 21, 11, 28, 29, 16],
+			'portugues-literatura': [24, 4, 6, 29, 18, 20, 10, 21, 18, 16],
+			'espanhol': [23, 10, 17, 6, 10],
 			'frances': [13, 18, 22, 14, 25],
-			'ingles': [09, 14, 17, 11, 22]
+			'ingles': [9, 14, 17, 11, 22]
 		},
 
 		'3ano': {
-			'conhecimentos-gerais': [07, 19, 13, 18, 04, 14, 29, 16, 23, 10, 13, 03, 02, 14, 23, 01, 25, 18, 13],
-			'portugues-literatura': [06, 10, 23, 05, 17, 18, 12],
-			'espanhol': [18, 09, 03, 12],
+			'conhecimentos-gerais': [7, 19, 13, 18, 4, 14, 29, 16, 23, 10, 13, 3, 2, 14, 23, 1, 25, 18, 13],
+			'portugues-literatura': [6, 10, 23, 5, 17, 18, 12],
+			'espanhol': [18, 9, 3, 12],
 			'frances': [17, 20, 30, 14],
-			'ingles': [03, 09, 24, 22],
-			'arte': [25, 25, 30, 05, 11],
-			'biologia': [26, 17, 03, 15, 09],
-			'educacao-fisica': [13, 14, 07, 22, 11],
+			'ingles': [3, 9, 24, 22],
+			'arte': [25, 25, 30, 5, 11],
+			'biologia': [26, 17, 3, 15, 9],
+			'educacao-fisica': [13, 14, 7, 22, 11],
 			'filosofia': [14, 25, 23, 26, 15],
 			'fisica': [17, 10, 25, 23, 28],
-			'geografia': [14, 23, 27, 07, 30],
-			'historia': [23, 10, 25, 04, 10],
+			'geografia': [14, 23, 27, 7, 30],
+			'historia': [23, 10, 25, 4, 10],
 			'matematica': [18, 28, 12, 29, 20],
 			'quimica': [17, 28, 11, 20, 13],
 			'sociologia': [15, 21, 13, 17, 19]
@@ -36,7 +36,7 @@ const _gabarito = {
 	}
 };
 
-const _categorias = {
+var _categorias = {
 	'2016': {
 		'3ano': {
 			'conhecimentos-gerais': [0, 18],
@@ -56,9 +56,9 @@ const _categorias = {
 			'lingua-estrangeira': [35, 39]
 		}
 	}
-}
+};
 
-const _especificas = {
+var _especificas = {
 	'administracao': ['historia', 'matematica'],
 	'agronomia': ['biologia', 'quimica'],
 	'arquitetura-e-urbanismo': ['arte', 'matematica'],
@@ -110,4 +110,4 @@ const _especificas = {
 	'tecnologia-em-construcao-civil': ['fisica', 'matematica'],
 	'tecnologia-em-meio-ambiente': ['matematica', 'quimica'],
 	'zootecnia': ['biologia', 'matematica']
-}
+};
