@@ -12,7 +12,7 @@ var dirs = {
 
 // Compile pug task
 
-gulp.task('pug', function() {
+gulp.task('pug', function () {
 	return gulp.src([dirs.source + '/pugs/**/*.pug', '!' + dirs.source + '/pugs/**/_*.pug'])
 		.pipe(pug({
 			pretty: true
@@ -22,7 +22,7 @@ gulp.task('pug', function() {
 
 // SASS + Autoprefixer
 
-gulp.task('sass', function() {
+gulp.task('sass', function () {
 	return sass(dirs.source + '/assets/css/main.sass', {
 			style: 'compact',
 			'default-encoding': 'utf-8'
@@ -32,7 +32,7 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest(dirs.site + '/assets/css'));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function () {
 	gulp.src([dirs.source + '/assets/js/**/*.js', '!' + dirs.source + '/assets/js/libs/*.js'])
 		.pipe(concat('script.js'))
 		.pipe(gulp.dest(dirs.site + '/assets/js/'));
@@ -40,11 +40,14 @@ gulp.task('js', function() {
 	gulp.src([dirs.source + '/assets/js/libs/*.js'])
 		.pipe(concat('libs.js'))
 		.pipe(gulp.dest(dirs.site + '/assets/js/'));
+
+	gulp.src([dirs.source + '/assets/js/*.json'])
+		.pipe(gulp.dest(dirs.site + '/assets/js/'));
 });
 
 // Watch task
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
 	gulp.watch(dirs.source + '/pugs/**', ['pug']);
 	gulp.watch(dirs.source + '/assets/css/**', ['sass']);
 	gulp.watch(dirs.source + '/assets/js/**', ['js']);
@@ -52,7 +55,7 @@ gulp.task('watch', function() {
 
 // Copia todos os arquivos da pasta assets menos as pastas css e js
 
-gulp.task('copyFiles', function() {
+gulp.task('copyFiles', function () {
 	return gulp.src([
 			dirs.source + '/assets/**/*',
 			'!' + dirs.source + '/assets/css/**',

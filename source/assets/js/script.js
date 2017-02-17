@@ -1,25 +1,37 @@
 var questoesCorretas = [],
 	questoesMarcadas = [],
 	serie, linguaEstrangeira, redacao, ano, curso, especificas;
+var _gabarito, _especificas, _categorias;
+
+var version = Math.floor(Math.random() * 1000 + 1);
 
 $(function () {
-	ativarCursos();
-	if (getUrlParameter('calcular') == 'true') {
-		// Pega os valores das variaveis
-		serie = getUrlParameter('serie');
-		linguaEstrangeira = getUrlParameter('lingua-estrangeira');
-		redacao = Number(getUrlParameter('redacao'));
-		ano = getUrlParameter('ano');
-		if (serie == '3ano') {
-			curso = getUrlParameter('curso');
-			especificas = _especificas[curso];
-		}
+	$.getJSON('/assets/js/gabarito.json?v=' + version, function (json) {
+		_gabarito = json['gabarito'];
+		_especificas = json['especificas'];
+		_categorias = json['categorias'];
 
-		setInputs();
-		setVariables();
-		calculaNota();
-	}
-	showTooltips();
+		ativarCursos();
+
+		if (getUrlParameter('calcular') == 'true') {
+			// Pega os valores das variaveis
+			serie = getUrlParameter('serie');
+			linguaEstrangeira = getUrlParameter('lingua-estrangeira');
+			redacao = Number(getUrlParameter('redacao'));
+			ano = getUrlParameter('ano');
+			if (serie == '3ano') {
+				curso = getUrlParameter('curso');
+				especificas = _especificas[curso];
+			}
+
+			setInputs();
+			setVariables();
+
+			calculaNota();
+		}
+		showTooltips();
+
+	});
 });
 
 
