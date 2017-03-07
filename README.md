@@ -6,6 +6,6 @@ O projeto usa **Gulp**, **SASS**, **Pug** e **jQuery**.
 
 ## Como usar
 
-1. Acesse esse [link](https://mathcarnelutt.github.io/Nota-PAS/) para acessar o site.
+1. Acesse esse [link](https://mathcarnelutt.github.io/Nota-UEM/) para acessar o site.
 2. Preencha os campos com as suas informações e clique em calcular.
 3. Fim
