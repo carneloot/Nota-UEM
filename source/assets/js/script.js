@@ -6,7 +6,7 @@ var _gabarito, _especificas, _categorias;
 var version = Math.floor(Math.random() * 1000 + 1);
 
 $(function () {
-	$.getJSON('/assets/js/gabarito.json?v=' + version, function (json) {
+	$.getJSON('./assets/js/gabarito.json?v=' + version, function (json) {
 		_gabarito = json['gabarito'];
 		_especificas = json['especificas'];
 		_categorias = json['categorias'];
