@@ -1,16 +1,13 @@
-function getUrlParameter(sParam) {
-	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		sURLVariables = sPageURL.split('&'),
-		sParameterName,
-		i;
+function getParams() {
+	let params = {},
+		pageURL = window.location.search.substring(1);
 
-	for (i = 0; i < sURLVariables.length; i++) {
-		sParameterName = sURLVariables[i].split('=');
-
-		if (sParameterName[0] === sParam) {
-			return sParameterName[1] === undefined ? true : sParameterName[1];
-		}
+	urlSplit = pageURL.split(/&/g);
+	for (let i in urlSplit) {
+		let paramSplit = urlSplit[i].split(/=/g);
+		params[paramSplit[0]] = paramSplit[1];
 	}
+	return params;
 }
 
 // Se o numero for menor que 10 coloca um 0 na frente

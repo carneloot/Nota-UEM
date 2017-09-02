@@ -1,0 +1,68 @@
+extends ../_layout
+
+block vars
+	- prefix = "./../";
+
+block corpo
+	.container
+		header
+			h1 Vestibular de Inverno
+		section.form: form
+			input(name="calcular" value="true" type="hidden")
+			fieldset.form-info
+				label Ano da prova
+					select.form-anos(name="ano" required)
+						option(value="" selected) -
+						for ano in anos
+							option(value=ano)= ano
+
+				label Língua Estrangeira
+					select.form-lingua-estrangeira(name="lingua-estrangeira" required)
+						option(value="" selected) -
+						option(value="ingles") Inglês
+						option(value="espanhol") Espanhol
+						option(value="frances") Francês
+
+				label Nota redação
+					.tooltip-wrap
+						input.form-redacao(placeholder="000"
+							name="redacao"
+							maxlength="3"
+							autocomplete="off"
+							type="number"
+							required
+							min="0" max="120" step="1" value="0"
+						)
+						.tooltip Se ainda não saiu a nota da redação, deixar o campo em zero.
+
+				label Curso
+					select.form-curso(name="curso" required)
+						option(value="" selected) -
+						for curso in cursos
+							option(value=cursoFormat(curso)) #{curso}
+
+			fieldset.form-questoes
+				- for (var i = 1; i <= 60; i++)
+					input.questao(placeholder=n(i)
+						name="qst-" + i
+						maxlength="2"
+						autocomplete="off"
+						type="number"
+						required
+						min="0" max="31" step="1"
+					)
+
+			input.btn-calcular(type="submit" value="Calcular")
+		section.notas
+			.notas-resumo
+				.nota-total Nota total <span>0 / 360</span>
+				.nota-objetivas Nota das questões objetivas <span>0 / 240</span>
+				.nota-redacao Nota da Redação <span>0 / 120</span>
+
+			.notas-tabela
+				table.tabela-questoes
+
+block scripts
+	script(src=prefix + "assets/js/libs.js?v=#{VERSION_REPLACE}")
+	script(src=prefix + "assets/js/funcoes.js?v=#{VERSION_REPLACE}")
+	script(src=prefix + "assets/js/inverno.js?v=#{VERSION_REPLACE}")

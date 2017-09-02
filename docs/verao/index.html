@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../assets/css/main.css?v=7d7323a45829b60033a6b1d96ce1fe7c">
+    <title>Notas UEM</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="./../apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./../favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./../favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="./../manifest.json">
+    <link rel="mask-icon" href="./../safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="./../favicon.ico">
+    <meta name="msapplication-config" content="./../browserconfig.xml">
+    <meta name="theme-color" content="#0e6655">
+  </head>
+  <body><a class="fork" href="https://github.com/MathCarnelutt/Nota-UEM" target="_blank"><span>Fork on Github</span></a>
+    <div class="container">
+      <header>
+        <h1>Vestibular de Verão</h1>
+      </header>
+      <section class="form">
+        <form>
+          <input name="calcular" value="true" type="hidden">
+          <fieldset class="form-info">
+            <label>Ano da prova
+              <select class="form-anos" name="ano" required>
+                <option value="" selected>-</option>
+                <option value="2016">2016</option>
+              </select>
+            </label>
+            <label>Língua Estrangeira
+              <select class="form-lingua-estrangeira" name="lingua-estrangeira" required>
+                <option value="" selected>-</option>
+                <option value="ingles">Inglês</option>
+                <option value="espanhol">Espanhol</option>
+                <option value="frances">Francês</option>
+              </select>
+            </label>
+            <label>Nota redação
+              <div class="tooltip-wrap">
+                <input class="form-redacao" placeholder="000" name="redacao" maxlength="3" autocomplete="off" type="number" required min="0" max="120" step="1" value="0">
+                <div class="tooltip">Se ainda não saiu a nota da redação, deixar o campo em zero.</div>
+              </div>
+            </label>
+            <label>Curso
+              <select class="form-curso" name="curso" required>
+                <option value="" selected>-</option>
+                <option value="administracao">Administração</option>
+                <option value="agronomia">Agronomia</option>
+                <option value="arquitetura-e-urbanismo">Arquitetura e Urbanismo</option>
+                <option value="artes-cenicas">Artes Cênicas</option>
+                <option value="artes-visuais">Artes Visuais</option>
+                <option value="biomedicina">Biomedicina</option>
+                <option value="bioquimica">Bioquímica</option>
+                <option value="ciencia-da-computacao">Ciência da Computação</option>
+                <option value="ciencias-biologicas">Ciências Biológicas</option>
+                <option value="ciencias-contabeis">Ciências Contábeis</option>
+                <option value="ciencias-economicas">Ciências Econômicas</option>
+                <option value="ciencias-sociais">Ciências Sociais</option>
+                <option value="comunicacao-e-multimeios">Comunicação e Multimeios</option>
+                <option value="design">Design</option>
+                <option value="direito">Direito</option>
+                <option value="educacao-fisica">Educação Física</option>
+                <option value="enfermagem">Enfermagem</option>
+                <option value="engenharia-agricola">Engenharia Agrícola</option>
+                <option value="engenharia-ambiental">Engenharia Ambiental</option>
+                <option value="engenharia-civil">Engenharia Civil</option>
+                <option value="engenharia-de-alimentos">Engenharia de Alimentos</option>
+                <option value="engenharia-de-producao">Engenharia de Produção</option>
+                <option value="engenharia-eletrica">Engenharia Elétrica</option>
+                <option value="engenharia-mecanica">Engenharia Mecânica</option>
+                <option value="engenharia-quimica">Engenharia Química</option>
+                <option value="engenharia-textil">Engenharia Têxtil</option>
+                <option value="estatistica">Estatística</option>
+                <option value="farmacia">Farmácia</option>
+                <option value="filosofia">Filosofia</option>
+                <option value="fisica">Física</option>
+                <option value="geografia">Geografia</option>
+                <option value="historia">História</option>
+                <option value="informatica">Informática</option>
+                <option value="letras">Letras</option>
+                <option value="licenciatura-plena-em-ciencias">Licenciatura Plena em Ciências</option>
+                <option value="matematica">Matemática</option>
+                <option value="medicina">Medicina</option>
+                <option value="medicina-veterinaria">Medicina Veterinária</option>
+                <option value="moda">Moda</option>
+                <option value="musica">Música</option>
+                <option value="odontologia">Odontologia</option>
+                <option value="pedagogia">Pedagogia</option>
+                <option value="psicologia">Psicologia</option>
+                <option value="quimica">Química</option>
+                <option value="secretariado-executivo-trilingue">Secretariado Executivo Trilíngue</option>
+                <option value="servico-social">Serviço Social</option>
+                <option value="tecnologia-em-alimentos">Tecnologia em Alimentos</option>
+                <option value="tecnologia-em-biotecnologia">Tecnologia em Biotecnologia</option>
+                <option value="tecnologia-em-construcao-civil">Tecnologia em Construção Civil</option>
+                <option value="tecnologia-em-meio-ambiente">Tecnologia em Meio Ambiente</option>
+                <option value="zootecnia">Zootecnia</option>
+              </select>
+            </label>
+          </fieldset>
+          <fieldset class="form-questoes">
+            <input class="questao" placeholder="01" name="qst-1" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="02" name="qst-2" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="03" name="qst-3" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="04" name="qst-4" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="05" name="qst-5" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="06" name="qst-6" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="07" name="qst-7" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="08" name="qst-8" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="09" name="qst-9" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="10" name="qst-10" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="11" name="qst-11" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="12" name="qst-12" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="13" name="qst-13" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="14" name="qst-14" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="15" name="qst-15" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="16" name="qst-16" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="17" name="qst-17" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="18" name="qst-18" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="19" name="qst-19" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="20" name="qst-20" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="21" name="qst-21" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="22" name="qst-22" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="23" name="qst-23" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="24" name="qst-24" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="25" name="qst-25" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="26" name="qst-26" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="27" name="qst-27" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="28" name="qst-28" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="29" name="qst-29" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="30" name="qst-30" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="31" name="qst-31" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="32" name="qst-32" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="33" name="qst-33" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="34" name="qst-34" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="35" name="qst-35" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="36" name="qst-36" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="37" name="qst-37" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="38" name="qst-38" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="39" name="qst-39" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="40" name="qst-40" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="41" name="qst-41" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="42" name="qst-42" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="43" name="qst-43" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="44" name="qst-44" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="45" name="qst-45" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="46" name="qst-46" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="47" name="qst-47" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="48" name="qst-48" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="49" name="qst-49" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="50" name="qst-50" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="51" name="qst-51" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="52" name="qst-52" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="53" name="qst-53" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="54" name="qst-54" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="55" name="qst-55" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="56" name="qst-56" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="57" name="qst-57" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="58" name="qst-58" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="59" name="qst-59" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+            <input class="questao" placeholder="60" name="qst-60" maxlength="2" autocomplete="off" type="number" required min="0" max="31" step="1">
+          </fieldset>
+          <input class="btn-calcular" type="submit" value="Calcular">
+        </form>
+      </section>
+      <section class="notas">
+        <div class="notas-resumo">
+          <div class="nota-total">Nota total <span>0 / 360</span></div>
+          <div class="nota-objetivas">Nota das questões objetivas <span>0 / 240</span></div>
+          <div class="nota-redacao">Nota da Redação <span>0 / 120</span></div>
+        </div>
+        <div class="notas-tabela">
+          <table class="tabela-questoes"></table>
+        </div>
+      </section>
+    </div>
+    <div class="container">
+      <footer>
+        <p>Esse site não tem afiliação alguma com a UEM. É um projeto feito por um cara que gosta de ajudar as pessoas.</p>
+        <div class="copyright-wrap">
+          <div class="copyright">&copy; Matheus Carnelutt - 2017</div><a href="https://github.com/MathCarnelutt/Nota-UEM/issues" target="_blank" title="Ou tem uma sugestão?">Encontrou um erro?</a>
+        </div>
+      </footer>
+    </div>
+    <script src="./../assets/js/libs.js?v=7d7323a45829b60033a6b1d96ce1fe7c"></script>
+    <script src="./../assets/js/funcoes.js?v=7d7323a45829b60033a6b1d96ce1fe7c"></script>
+    <script src="./../assets/js/verao.js?v=7d7323a45829b60033a6b1d96ce1fe7c"></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89959063-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  </body>
+</html>

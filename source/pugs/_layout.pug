@@ -1,0 +1,37 @@
+- var prefix = "./";
+block vars
+
+include _vars
+doctype html
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href=prefix + "assets/css/main.css?v=#{VERSION_REPLACE}")
+    
+    title Notas UEM
+
+    //- INICIO Favicon
+    link(rel="apple-touch-icon" sizes="180x180" href=prefix + "apple-touch-icon.png")
+    link(rel="icon" type="image/png" href=prefix + "favicon-32x32.png" sizes="32x32")
+    link(rel="icon" type="image/png" href=prefix + "favicon-16x16.png" sizes="16x16")
+    link(rel="manifest" href=prefix + "manifest.json")
+    link(rel="mask-icon" href=prefix + "safari-pinned-tab.svg" color="#5bbad5")
+    link(rel="shortcut icon" href=prefix + "favicon.ico")
+    meta(name="msapplication-config" content=prefix + "browserconfig.xml")
+    meta(name="theme-color" content="#0e6655")
+
+  body
+    a.fork(href="https://github.com/MathCarnelutt/Nota-UEM" target="_blank"): span Fork on Github
+    block corpo
+
+    .container
+      footer
+        p Esse site não tem afiliação alguma com a UEM. É um projeto feito por um cara que gosta de ajudar as pessoas.
+        .copyright-wrap
+          .copyright &copy; Matheus Carnelutt - 2017
+          a(href="https://github.com/MathCarnelutt/Nota-UEM/issues" target="_blank" title="Ou tem uma sugestão?") Encontrou um erro?
+
+    block scripts
+
+    include _analyticstracking.html

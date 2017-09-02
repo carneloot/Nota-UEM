@@ -1,28 +1,26 @@
 var questoesCorretas = [],
 	questoesMarcadas = [],
-	serie, linguaEstrangeira, redacao, ano, curso, especificas;
-var _gabarito, _especificas, _categorias;
+	linguaEstrangeira, redacao, ano, curso, especificas;
+var _gabarito, _especificas, _categorias, params;
 
 var version = Math.floor(Math.random() * 1000 + 1);
+const NUM_QUESTOES = 60;
 
 $(function () {
-	$.getJSON('./assets/js/gabarito.json?v=' + version, function (json) {
+	$.getJSON('./../assets/js/gabInv.json?v=' + version, function (json) {
 		_gabarito = json['gabarito'];
 		_especificas = json['especificas'];
 		_categorias = json['categorias'];
 
-		ativarCursos();
+		params = getParams();
 
-		if (getUrlParameter('calcular') == 'true') {
+		if (params['calcular'] == 'true') {
 			// Pega os valores das variaveis
-			serie = getUrlParameter('serie');
-			linguaEstrangeira = getUrlParameter('lingua-estrangeira');
-			redacao = Number(getUrlParameter('redacao'));
-			ano = getUrlParameter('ano');
-			if (serie == '3ano') {
-				curso = getUrlParameter('curso');
-				especificas = _especificas[curso];
-			}
+			linguaEstrangeira = params['lingua-estrangeira'];
+			redacao = Number(params['redacao']);
+			ano = params['ano'];
+			curso = params['curso'];
+			especificas = _especificas[curso];
 
 			setInputs();
 			setVariables();
@@ -34,27 +32,12 @@ $(function () {
 	});
 });
 
-
-// Se alterar a série para 3o ano ativa a opcao de cursos
-function ativarCursos() {
-	$('.form-serie').on('change', function () {
-		if ($(this).val() == '3ano')
-			$('.form-curso').removeAttr('disabled');
-		else
-			$('.form-curso').attr('disabled', 'true');
-	});
-}
-
 // Seta as tags INPUT com os valores que estão no GET
 function setInputs() {
-	for (var i = 1; i <= 40; i++)
-		$('input.questao[name="qst-' + i + '"]').val(getUrlParameter('qst-' + i));
+	for (var i = 1; i <= NUM_QUESTOES; i++)
+		$('input.questao[name="qst-' + i + '"]').val(params['qst-' + i]);
 
-	$('option[value="' + serie + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
-	if (serie == '3ano') {
-		$('.form-curso').removeAttr('disabled');
-		$('option[value="' + curso + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
-	}
+	$('option[value="' + curso + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
 	$('option[value="' + linguaEstrangeira + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
 	$('option[value="' + ano + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
 
@@ -63,16 +46,14 @@ function setInputs() {
 
 // Seta as variaveis questoesMarcadas e questoesCorretas
 function setVariables() {
-	for (var i = 1; i <= 40; i++)
-		questoesMarcadas.push(parseInt(getUrlParameter('qst-' + i), 10));
+	for (var i = 1; i <= NUM_QUESTOES; i++)
+		questoesMarcadas.push(parseInt(params['qst-' + i], 10));
 
-	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['conhecimentos-gerais']);
-	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['portugues-literatura']);
-	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][linguaEstrangeira]);
-	if (serie == '3ano') {
-		questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][especificas[0]]);
-		questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie][especificas[1]]);
-	}
+	questoesCorretas = questoesCorretas.concat(_gabarito[ano]['conhecimentos-gerais']);
+	questoesCorretas = questoesCorretas.concat(_gabarito[ano]['portugues-literatura']);
+	questoesCorretas = questoesCorretas.concat(_gabarito[ano][linguaEstrangeira]);
+	questoesCorretas = questoesCorretas.concat(_gabarito[ano][especificas[0]]);
+	questoesCorretas = questoesCorretas.concat(_gabarito[ano][especificas[1]]);
 }
 
 // Calcula as notas e mostra na tabela
@@ -96,23 +77,18 @@ function calculaNota() {
 
 	notaTotal = notaObjetivas + redacao;
 
-
 	// Gera a array de categorias
 
-	var numerosCategorias = _categorias[ano][serie];
-
+	var numerosCategorias = _categorias[ano];
 	categorias = [
 		['Conhecimentos Gerais', numerosCategorias['conhecimentos-gerais'][0], numerosCategorias['conhecimentos-gerais'][1]],
 		['Português e Literatura', numerosCategorias['portugues-literatura'][0], numerosCategorias['portugues-literatura'][1]],
-		['Língua Estrangeira - ' + pretty(linguaEstrangeira), numerosCategorias['lingua-estrangeira'][0], numerosCategorias['lingua-estrangeira'][1]]
+		['Língua Estrangeira - ' + pretty(linguaEstrangeira), numerosCategorias['lingua-estrangeira'][0], numerosCategorias['lingua-estrangeira'][1]],
+		['Específica 1 - ' + pretty(especificas[0]), numerosCategorias['especifica-1'][0], numerosCategorias['especifica-1'][1]],
+		['Específica 2 - ' + pretty(especificas[1]), numerosCategorias['especifica-2'][0], numerosCategorias['especifica-2'][1]]
 	];
 
-	if (serie == '3ano') {
-		categorias[3] = ['Específica 1 - ' + pretty(especificas[0]), numerosCategorias['especifica-1'][0], numerosCategorias['especifica-1'][1]];
-		categorias[4] = ['Específica 2 - ' + pretty(especificas[1]), numerosCategorias['especifica-2'][0], numerosCategorias['especifica-2'][1]];
-	}
-
-	// Coloca 'Reprovado' na frente se zerou a categoria ou a nota se nao zerou
+	// Calcula a nota da categoria
 
 	for (var i = 0; i < categorias.length; i++) {
 		var notaCategoria = 0,
@@ -129,7 +105,6 @@ function calculaNota() {
 			categorias[i][0] += '<span class=\'gabaritado\'>Gabaritou (Total: ' + notaCategoria + ')</span>';
 		else
 			categorias[i][0] += '<span class=\'nota\'>Total: ' + notaCategoria + '</span>';
-
 	}
 
 	// INICIO Criação tabela notas
@@ -164,6 +139,7 @@ function calculaNota() {
 				htmlTable += '</tr>';
 		}
 	}
+
 	htmlTable += '</tbody>';
 
 	htmlTable += '<tfoot>';
@@ -180,7 +156,7 @@ function calculaNota() {
 
 	htmlTable += '<tr>';
 	htmlTable += '<th colspan="2">Zeradas</th>';
-	htmlTable += '<td>' + (40 - numQuestoesCertas) + '</td>';
+	htmlTable += '<td>' + (NUM_QUESTOES - numQuestoesCertas) + '</td>';
 	htmlTable += '</tr>';
 
 	htmlTable += '</tfoot>';

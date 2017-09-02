@@ -1,106 +1,27 @@
-function getUrlParameter(sParam) {
-	var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-		sURLVariables = sPageURL.split('&'),
-		sParameterName,
-		i;
-
-	for (i = 0; i < sURLVariables.length; i++) {
-		sParameterName = sURLVariables[i].split('=');
-
-		if (sParameterName[0] === sParam) {
-			return sParameterName[1] === undefined ? true : sParameterName[1];
-		}
-	}
-}
-
-// Se o numero for menor que 10 coloca um 0 na frente
-function n(n) {
-	return n > 9 ? '' + n : '0' + n;
-}
-
-// Retorna o numero formatado com virgulas no lugar de pontos
-function nota(num) {
-	if (num === parseInt(num, 10))
-		return num.toString() + ',0';
-	else
-		return num.toString().replace('.', ',');
-}
-
-// Converte o numero em binario e deixa com 5 caracteres
-function num2Bin(num) {
-	return '000000'.substring((num.toString(2) + '').length, 5) + num.toString(2);
-}
-
-// Função que pega os numeros marcados e corretos e retorna a nota
-function getNota(marcado, correto) {
-	// Se a questão for anulada
-	if (correto == -1)
-		return 6;
-
-	// Converte os numeros em binário
-	marcado = num2Bin(marcado);
-	correto = num2Bin(correto);
-
-	// Pega o numero de questões corretas
-	var numCorr = correto.split(1).length - 1;
-	// Inicia a Variavel numAcertos
-	var numAcertos = 0;
-
-	for (var i = 0; i < 5; i++) {
-		// Se marcar alguma que nao podia
-		if (marcado[i] == 1 && correto[i] == 0)
-			return 0;
-
-		// Se marcou certo a questão certa
-		if (marcado[i] == 1 && correto[i] == 1)
-			numAcertos++;
-	}
-	// Retorna 6 dividido pelo numero de corretas vezes no numero de acertos
-	return (6 / numCorr) * numAcertos;
-}
-
-// Pega uma especifica feia e retorna bonita
-function pretty(especifica) {
-	var nomes = {
-		'arte': 'Arte',
-		'biologia': 'Biologia',
-		'educacao-fisica': 'Educação Física',
-		'filosofia': 'Filosofia',
-		'fisica': 'Física',
-		'geografia': 'Geografia',
-		'historia': 'História',
-		'matematica': 'Matemática',
-		'quimica': 'Química',
-		'sociologia': 'Sociologia',
-		'ingles': 'Inglês',
-		'espanhol': 'Espanhol',
-		'frances': 'Francês'
-	};
-	return nomes[especifica];
-}
 var questoesCorretas = [],
 	questoesMarcadas = [],
 	serie, linguaEstrangeira, redacao, ano, curso, especificas;
-var _gabarito, _especificas, _categorias;
+var _gabarito, _especificas, _categorias, params;
 
 var version = Math.floor(Math.random() * 1000 + 1);
 
 $(function () {
-	$.getJSON('./assets/js/gabarito.json?v=' + version, function (json) {
+	$.getJSON('./../assets/js/gabPas.json?v=' + version, function (json) {
 		_gabarito = json['gabarito'];
 		_especificas = json['especificas'];
 		_categorias = json['categorias'];
 
 		ativarCursos();
+		params = getParams();
 
-		if (getUrlParameter('calcular') == 'true') {
+		if (params['calcular'] == 'true') {
 			// Pega os valores das variaveis
-			serie = getUrlParameter('serie');
-			linguaEstrangeira = getUrlParameter('lingua-estrangeira');
-			redacao = Number(getUrlParameter('redacao'));
-			ano = getUrlParameter('ano');
+			serie = params['serie'];
+			linguaEstrangeira = params['lingua-estrangeira'];
+			redacao = Number(params['redacao']);
+			ano = params['ano'];
 			if (serie == '3ano') {
-				curso = getUrlParameter('curso');
+				curso = params['curso'];
 				especificas = _especificas[curso];
 			}
 
@@ -128,7 +49,7 @@ function ativarCursos() {
 // Seta as tags INPUT com os valores que estão no GET
 function setInputs() {
 	for (var i = 1; i <= 40; i++)
-		$('input.questao[name="qst-' + i + '"]').val(getUrlParameter('qst-' + i));
+		$('input.questao[name="qst-' + i + '"]').val(params['qst-' + i]);
 
 	$('option[value="' + serie + '"]').attr('selected', 'selected').siblings().removeAttr('selected');
 	if (serie == '3ano') {
@@ -144,7 +65,7 @@ function setInputs() {
 // Seta as variaveis questoesMarcadas e questoesCorretas
 function setVariables() {
 	for (var i = 1; i <= 40; i++)
-		questoesMarcadas.push(parseInt(getUrlParameter('qst-' + i), 10));
+		questoesMarcadas.push(parseInt(params['qst-' + i], 10));
 
 	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['conhecimentos-gerais']);
 	questoesCorretas = questoesCorretas.concat(_gabarito[ano][serie]['portugues-literatura']);
